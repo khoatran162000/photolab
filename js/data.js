@@ -78,7 +78,7 @@ const D = (() => {
         { id: 't3', label: '3', feq: 69, N: 2.4, sensor: 'P394', mp: 12, mfd: 0.4, mag: 0.1, ois: 3, af: true },
         { id: 't5', label: '5', feq: 115, N: 2.9, sensor: 'P25', mp: 50, mfd: 0.5, mag: 0.14, ois: 3, af: true }
       ],
-      pro: { label: 'Chuyên nghiệp', iso: [50, 3200], shutter: [1 / 12000, 30], ev: 2, wb: [2300, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w', 't3', 't5'], samsungRule: true },
+      pro: { label: 'Chuyên nghiệp|Pro', iso: [50, 3200], shutter: [1 / 12000, 30], ev: 2, wb: [2300, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w', 't3', 't5'], samsungRule: true },
       note: 'Khẩu độ trên điện thoại Samsung là cố định – trong chế độ Pro bạn điều khiển ISO, tốc độ, EV, cân bằng trắng (K) và lấy nét tay. Thông số Pro mode là mô phỏng gần đúng, có thể khác theo phần mềm.' },
     { id: 'a57', kind: 'phone', brand: 'samsung', name: 'Galaxy A57', ref: 'Samsung · 2026 · tầm trung',
       cams: [
@@ -86,7 +86,7 @@ const D = (() => {
         { id: 'w', label: '1', feq: 23, N: 1.8, sensor: 'P156', mp: 50, mfd: 0.12, mag: 0.1, ois: 3, af: true, main: true },
         { id: 'macro', label: 'Macro', feq: 25, N: 2.4, sensor: 'P5', mp: 5, mfd: 0.04, mag: 0.6, ois: 0, af: false, fixedFocus: 0.04 }
       ],
-      pro: { label: 'Chuyên nghiệp', iso: [50, 3200], shutter: [1 / 6000, 30], ev: 2, wb: [2300, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w'], samsungRule: true },
+      pro: { label: 'Chuyên nghiệp|Pro', iso: [50, 3200], shutter: [1 / 6000, 30], ev: 2, wb: [2300, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w'], samsungRule: true },
       note: 'Camera góc siêu rộng lấy nét cố định; camera macro 5 MP lấy nét cố định ở ~4 cm. Không có tele quang học – “2x” là cắt ảnh từ camera chính.' },
     { id: 'ip18p', kind: 'phone', brand: 'apple', name: 'iPhone 18 Pro', ref: 'Apple · 2026 · Pro controls + khẩu độ thay đổi',
       cams: [
@@ -95,8 +95,8 @@ const D = (() => {
         { id: 't4', label: '4', feq: 100, N: 2.8, sensor: 'P255', mp: 48, mfd: 0.2, mag: 0.25, ois: 4, af: true },
         { id: 't8', label: '8', feq: 200, N: 2.8, sensor: 'P255', crop: 2, mp: 12, mfd: 0.2, mag: 0.5, ois: 4, af: true }
       ],
-      pro: { label: 'Pro', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 2, wb: [2500, 10000], isoManual: false, apMode: 'list', proCams: ['uw', 'w', 't4', 't8'] },
-      third: { label: 'App bên thứ ba (ISO tay)', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 0, wb: [2500, 10000], isoManual: true, apMode: 'list', proCams: ['uw', 'w', 't4', 't8'] },
+      pro: { label: 'Điều khiển Pro|Pro controls', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 2, wb: [2500, 10000], isoManual: false, apMode: 'list', proCams: ['uw', 'w', 't4', 't8'] },
+      third: { label: 'App bên thứ ba|Manual ISO', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 0, wb: [2500, 10000], isoManual: true, apMode: 'list', proCams: ['uw', 'w', 't4', 't8'] },
       note: 'Lần đầu iPhone có khẩu độ cơ học: 4 nấc f/1.48 – f/1.8 – f/2.8 – f/4.0 trên camera chính (Pro controls: khẩu, tốc độ, cân bằng trắng, biểu đồ histogram; ISO do máy tự chọn). 8x là cắt giữa cảm biến tele 4x.' },
     { id: 'ip17', kind: 'phone', brand: 'apple', name: 'iPhone 17', ref: 'Apple · 2025 · bản tiêu chuẩn',
       cams: [
@@ -105,7 +105,7 @@ const D = (() => {
         { id: 'w2', label: '2', feq: 52, N: 1.6, sensor: 'P156', crop: 2, mp: 12, mfd: 0.15, mag: 0.2, ois: 4, af: true }
       ],
       pro: null,
-      third: { label: 'App bên thứ ba (Halide, Lightroom…)', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 0, wb: [2500, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w', 'w2'] },
+      third: { label: 'App bên thứ ba|Halide, Lightroom…', iso: [32, 3072], shutter: [1 / 8000, 1], ev: 0, wb: [2500, 10000], isoManual: true, apMode: 'fixed', proCams: ['uw', 'w', 'w2'] },
       note: 'Ứng dụng Camera gốc không cho chỉnh tốc độ màn trập hay ISO – chỉ có bù sáng (EV) và Photographic Styles. Muốn chỉnh tay phải dùng app bên thứ ba. “2x” là cắt từ cảm biến 48 MP.' }
   ];
 

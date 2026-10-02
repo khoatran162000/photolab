@@ -452,14 +452,19 @@ const SIM = (() => {
 
   /* ---------- giao diện ---------- */
   const R = {};
+  // Nhãn song ngữ: chuỗi dạng "Tiếng Việt|English" → Tiếng Việt (English)
+  const sp = t => { const i = (t || '').indexOf('|'); return i < 0 ? [t, ''] : [t.slice(0, i), t.slice(i + 1)]; };
+  const plain = t => { const [vi, en] = sp(t); return en ? `${vi} (${en})` : vi; };
+  const lb = t => { const [vi, en] = sp(t); return en ? [vi, ' ', h('span', { class: 'en' }, `(${en})`)] : [vi]; };
+  const two = t => { const [vi, en] = sp(t); return en ? [h('span', { class: 'seg-vi' }, vi), h('span', { class: 'seg-en' }, en)] : [vi]; };
   function dial(key, label, opts) {
-    const wrap = h('div', { class: 'dial', 'data-key': key });
+    const wrap = h('div', { class: 'dial' + (opts.auto ? ' has-auto' : ''), 'data-key': key });
     const val = h('output', { class: 'dial-val' });
-    const range = h('input', { type: 'range', min: 0, max: 1, step: 1, 'aria-label': label });
-    const minus = h('button', { class: 'dial-btn', type: 'button', 'aria-label': 'Giảm ' + label }, '−');
-    const plus = h('button', { class: 'dial-btn', type: 'button', 'aria-label': 'Tăng ' + label }, '+');
-    const auto = opts.auto ? h('button', { class: 'chip sm', type: 'button', 'aria-pressed': 'false' }, 'Tự động') : null;
-    wrap.append(h('div', { class: 'dial-top' }, h('span', { class: 'dial-label' }, label), auto, val), h('div', { class: 'dial-row' }, minus, range, plus));
+    const range = h('input', { type: 'range', min: 0, max: 1, step: 1, 'aria-label': plain(label) });
+    const minus = h('button', { class: 'dial-btn', type: 'button', 'aria-label': 'Giảm ' + plain(label) }, '−');
+    const plus = h('button', { class: 'dial-btn', type: 'button', 'aria-label': 'Tăng ' + plain(label) }, '+');
+    const auto = opts.auto ? h('button', { class: 'chip sm', type: 'button', 'aria-pressed': 'false' }, 'Tự động (Auto)') : null;
+    wrap.append(h('div', { class: 'dial-top' }, h('span', { class: 'dial-label' }, lb(label)), auto, val), h('div', { class: 'dial-row' }, minus, range, plus));
     const step = d => { const l = opts.list(); const i = clamp(opts.idx(l) + d, 0, l.length - 1); opts.set(l[i]); touch(); };
     minus.onclick = () => step(-1); plus.onclick = () => step(1);
     range.oninput = () => { const l = opts.list(); opts.set(l[+range.value]); touch(); };
@@ -477,28 +482,28 @@ const SIM = (() => {
     if (d.auto) d.auto.setAttribute('aria-pressed', isAuto ? 'true' : 'false');
   }
   function seg(key, label, items, get, set, opts = {}) {
-    const g = h('div', { class: 'seg' + (opts.wrap ? ' wrap' : ''), role: 'radiogroup', 'aria-label': label });
+    const g = h('div', { class: 'seg' + (opts.wrap ? ' wrap' : '') + (opts.cls ? ' ' + opts.cls : ''), role: 'radiogroup', 'aria-label': label ? plain(label) : null });
     for (const [v, txt, title] of items) {
-      const b = h('button', { type: 'button', class: 'seg-b', role: 'radio', 'aria-checked': get() === v ? 'true' : 'false', title: title || null }, txt);
+      const b = h('button', { type: 'button', class: 'seg-b', role: 'radio', 'aria-checked': get() === v ? 'true' : 'false', title: title || null, 'aria-label': plain(txt) }, two(txt));
       b.onclick = () => { set(v); $$('.seg-b', g).forEach(x => x.setAttribute('aria-checked', 'false')); b.setAttribute('aria-checked', 'true'); touch(); if (opts.rebuild) rebuildPanel(); };
       g.append(b);
     }
-    return h('div', { class: 'field' }, label ? h('div', { class: 'field-label' }, label) : null, g);
+    return h('div', { class: 'field' }, label ? h('div', { class: 'field-label' }, h('span', null, lb(label))) : null, g);
   }
   function toggle(label, get, set, opts = {}) {
-    const b = h('button', { type: 'button', class: 'tog', 'aria-pressed': get() ? 'true' : 'false', title: opts.title || null }, h('span', { class: 'tog-dot' }), label);
+    const b = h('button', { type: 'button', class: 'tog', 'aria-pressed': get() ? 'true' : 'false', title: opts.title || null }, h('span', { class: 'tog-dot' }), lb(label));
     b.onclick = () => { set(!get()); b.setAttribute('aria-pressed', get() ? 'true' : 'false'); touch(); if (opts.rebuild) rebuildPanel(); };
     return b;
   }
   function slider(key, label, min, max, step, get, set, fmt, opts = {}) {
     const out = h('output', { class: 'sl-val' });
-    const inp = h('input', { type: 'range', min, max, step, value: get(), 'aria-label': label });
+    const inp = h('input', { type: 'range', min, max, step, value: get(), 'aria-label': plain(label) });
     inp.oninput = () => { set(+inp.value); out.textContent = fmt(get()); touch(); if (opts.after) opts.after(); };
     out.textContent = fmt(get());
     R[key] = { inp, out, get, fmt };
-    return h('div', { class: 'field' }, h('div', { class: 'field-label' }, label, out), inp, opts.hint ? h('div', { class: 'hint' }, opts.hint) : null);
+    return h('div', { class: 'field' }, h('div', { class: 'field-label' }, h('span', null, lb(label)), out), inp, opts.hint ? h('div', { class: 'hint' }, opts.hint) : null);
   }
-  const group = (title, ...kids) => h('section', { class: 'grp' }, h('h3', { class: 'grp-t' }, title), ...kids);
+  const group = (title, ...kids) => h('section', { class: 'grp' }, h('h3', { class: 'grp-t' }, lb(title)), ...kids);
 
   function rebuildPanel() {
     const host = $('#lab-controls'); if (!host) return;
@@ -506,71 +511,72 @@ const SIM = (() => {
     host.innerHTML = ''; lastPanel = 0;
     const r = rig(), d = r.dev;
     if (!r.phone) {
-      host.append(group('Chế độ chụp',
-        seg('mode', null, [['auto', 'Auto', 'Máy tự quyết mọi thứ'], ['P', 'P', 'Chương trình: máy chọn khẩu và tốc độ, bạn chọn ISO'], ['A', d.id.startsWith('dslr') ? 'Av' : 'A', 'Ưu tiên khẩu độ'], ['S', d.id.startsWith('dslr') ? 'Tv' : 'S', 'Ưu tiên tốc độ'], ['M', 'M', 'Chỉnh tay hoàn toàn']], () => S.mode, v => { S.mode = v; }, { rebuild: true }),
+      const canon = d.id.startsWith('dslr');
+      host.append(group('Chế độ chụp|Shooting mode',
+        seg('mode', null, [['auto', 'Tự động|Auto', 'Máy tự quyết mọi thứ'], ['P', 'Chương trình|P', 'Program: máy chọn khẩu và tốc độ, bạn chọn ISO'], ['A', 'Ưu tiên khẩu|' + (canon ? 'Av' : 'A'), 'Aperture priority – ưu tiên khẩu độ'], ['S', 'Ưu tiên tốc độ|' + (canon ? 'Tv' : 'S'), 'Shutter priority – ưu tiên tốc độ màn trập'], ['M', 'Thủ công|M', 'Manual – chỉnh tay hoàn toàn']], () => S.mode, v => { S.mode = v; }, { rebuild: true, cls: 'modes' }),
         h('p', { class: 'hint' }, ({ auto: 'Máy tự chọn khẩu, tốc độ và ISO.', P: 'Máy chọn cặp khẩu–tốc độ; xoay để dịch chương trình (Program shift) mà phơi sáng không đổi.', A: 'Bạn chọn khẩu (độ sâu trường ảnh), máy chọn tốc độ.', S: 'Bạn chọn tốc độ (chuyển động), máy chọn khẩu.', M: 'Bạn chọn cả khẩu và tốc độ; máy chỉ báo kim đo sáng.' })[S.mode])
       ));
-      const exg = group('Phơi sáng');
-      exg.append(dial('N', 'Khẩu độ', { list: () => U.APERTURE_STEPS.filter(x => x >= r.Nwide - 0.01 && x <= r.Nmin + 0.01), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.N : S.N)), set: v => { S.N = v; } }));
-      exg.append(dial('t', 'Tốc độ màn trập', { list: () => U.SHUTTERS.filter(x => x >= d.shutter[0] * 0.99 && x <= d.shutter[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.t : S.t)), set: v => { S.t = v; } }));
-      exg.append(dial('iso', 'ISO', { auto: true, list: () => U.ISOS.filter(x => x >= d.iso[0] && x <= d.iso[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.iso : S.iso)), set: v => { S.iso = v; S.isoAuto = false; }, toggleAuto: () => { S.isoAuto = !S.isoAuto; } }));
-      exg.append(dial('ec', 'Bù sáng', { list: () => Array.from({ length: 19 }, (_, i) => (i - 9) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }));
-      if (S.mode === 'P') exg.append(dial('ps', 'Dịch chương trình', { list: () => [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6], idx: l => l.indexOf(S.pshift), set: v => { S.pshift = v; } }));
-      exg.append(seg('met', 'Đo sáng', [['evaluative', 'Đánh giá'], ['center', 'Trung tâm'], ['spot', 'Điểm']], () => S.metering, v => { S.metering = v; }));
+      const exg = group('Phơi sáng|Exposure');
+      exg.append(dial('N', 'Khẩu độ|Aperture', { list: () => U.APERTURE_STEPS.filter(x => x >= r.Nwide - 0.01 && x <= r.Nmin + 0.01), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.N : S.N)), set: v => { S.N = v; } }));
+      exg.append(dial('t', 'Tốc độ màn trập|Shutter speed', { list: () => U.SHUTTERS.filter(x => x >= d.shutter[0] * 0.99 && x <= d.shutter[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.t : S.t)), set: v => { S.t = v; } }));
+      exg.append(dial('iso', 'Độ nhạy sáng|ISO', { auto: true, list: () => U.ISOS.filter(x => x >= d.iso[0] && x <= d.iso[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.iso : S.iso)), set: v => { S.iso = v; S.isoAuto = false; }, toggleAuto: () => { S.isoAuto = !S.isoAuto; } }));
+      exg.append(dial('ec', 'Bù sáng|Exposure compensation', { list: () => Array.from({ length: 19 }, (_, i) => (i - 9) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }));
+      if (S.mode === 'P') exg.append(dial('ps', 'Dịch chương trình|Program shift', { list: () => [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6], idx: l => l.indexOf(S.pshift), set: v => { S.pshift = v; } }));
+      exg.append(seg('met', 'Chế độ đo sáng|Metering mode', [['evaluative', 'Đánh giá|Evaluative / Matrix'], ['center', 'Trung tâm|Center-weighted'], ['spot', 'Điểm|Spot']], () => S.metering, v => { S.metering = v; }));
       host.append(exg);
       // ống kính
-      const lg = group('Ống kính');
+      const lg = group('Ống kính|Lens');
       const sel = h('select', { class: 'sel', 'aria-label': 'Chọn ống kính' }, ...D.LENSES.map(L => h('option', { value: L.id, selected: L.id === S.lens ? true : null }, L.name + (L.format === 'APSC' ? ' · APS-C' : ''))));
       sel.onchange = () => setLens(sel.value);
       lg.append(h('div', { class: 'field' }, sel, h('div', { class: 'hint' }, r.lens.about)));
-      if (r.lens.fr[0] !== r.lens.fr[1]) lg.append(slider('focal', 'Vòng zoom', r.lens.fr[0], r.lens.fr[1], 1, () => S.focal, v => setFocal(v, true), v => `${v} mm`, { after: () => { } }));
-      if (r.tilt) lg.append(slider('tilt', 'Độ nghiêng (tilt)', -8, 8, 0.5, () => S.tilt, v => { S.tilt = v; }, v => `${v}°`, { hint: 'Nghiêng thân ống kính làm mặt phẳng nét bị nghiêng: cảnh trông như mô hình thu nhỏ.' }));
+      if (r.lens.fr[0] !== r.lens.fr[1]) lg.append(slider('focal', 'Vòng zoom|Zoom ring', r.lens.fr[0], r.lens.fr[1], 1, () => S.focal, v => setFocal(v, true), v => `${v} mm`, { after: () => { } }));
+      if (r.tilt) lg.append(slider('tilt', 'Độ nghiêng|Tilt', -8, 8, 0.5, () => S.tilt, v => { S.tilt = v; }, v => `${v}°`, { hint: 'Nghiêng thân ống kính làm mặt phẳng nét bị nghiêng: cảnh trông như mô hình thu nhỏ.' }));
       lg.append(h('div', { class: 'togs' },
-        r.lens.is || d.ibis ? toggle('Chống rung', () => S.is, v => { S.is = v; }) : null,
-        toggle('Hiệu chỉnh ống kính', () => S.lensCorr, v => { S.lensCorr = v; }, { title: 'Máy tự sửa méo, tối góc và viền màu' }),
-        r.lens.format === 'APSC' && d.sensor === 'FF' ? toggle('Tự cắt APS-C', () => S.cropAuto, v => { S.cropAuto = v; }) : null));
+        r.lens.is || d.ibis ? toggle('Chống rung|Image stabilization', () => S.is, v => { S.is = v; }) : null,
+        toggle('Hiệu chỉnh ống kính|Lens correction', () => S.lensCorr, v => { S.lensCorr = v; }, { title: 'Máy tự sửa méo, tối góc và viền màu' }),
+        r.lens.format === 'APSC' && d.sensor === 'FF' ? toggle('Tự cắt khung APS-C|Auto APS-C crop', () => S.cropAuto, v => { S.cropAuto = v; }) : null));
       host.append(lg);
       // lấy nét
-      const fg = group('Lấy nét');
+      const fg = group('Lấy nét|Focus');
       if (!r.mfOnly) {
-        fg.append(seg('af', 'Chế độ AF', [['S', 'AF-S'], ['C', 'AF-C'], ['M', 'MF']], () => S.afMode, v => { S.afMode = v; if (v !== 'M') autoFocus(rig()); }, { rebuild: true }));
-        if (S.afMode !== 'M') fg.append(seg('afa', 'Vùng AF', [['auto', 'Máy tự chọn'], ['point', 'Một điểm'], ...(d.kind === 'ml' || S.vf === 'lv' ? [['eye', 'Nhận diện mắt']] : [])], () => S.afArea, v => { S.afArea = v; autoFocus(rig()); }, { rebuild: true }));
+        fg.append(seg('af', 'Chế độ lấy nét|Focus mode', [['S', 'Lấy nét đơn|AF-S · One Shot', 'Khóa nét khi nhấn nửa nút chụp – chủ thể đứng yên'], ['C', 'Lấy nét liên tục|AF-C · AI Servo', 'Liên tục bám nét – chủ thể chuyển động'], ['M', 'Lấy nét tay|MF', 'Manual focus – xoay vòng lấy nét']], () => S.afMode, v => { S.afMode = v; if (v !== 'M') autoFocus(rig()); }, { rebuild: true }));
+        if (S.afMode !== 'M') fg.append(seg('afa', 'Vùng lấy nét|AF area', [['auto', 'Máy tự chọn|Auto area'], ['point', 'Một điểm|Single point'], ...(d.kind === 'ml' || S.vf === 'lv' ? [['eye', 'Nhận diện mắt|Eye AF']] : [])], () => S.afArea, v => { S.afArea = v; autoFocus(rig()); }, { rebuild: true }));
         if (S.afArea === 'point' && S.afMode !== 'M') fg.append(h('p', { class: 'hint' }, 'Bấm vào khung hình để đặt điểm lấy nét.'));
       }
-      if (S.afMode === 'M' || r.mfOnly) fg.append(slider('mf', 'Vòng lấy nét', 0, 1000, 1, () => mfToSlider(S.mf, r), v => { S.mf = sliderToMf(v, r); }, v => fmtDist(sliderToMf(v, r)), { hint: d.kind === 'ml' || S.vf === 'lv' ? 'Bật Focus peaking để thấy viền đỏ ở vùng nét.' : 'Nhìn qua kính ngắm và vặn tới khi chủ thể nét.' }));
-      else fg.append(h('button', { class: 'btn ghost', type: 'button', onclick: () => { autoFocus(rig()); touch(); } }, 'Lấy nét lại (nhấn nửa nút chụp)'));
+      if (S.afMode === 'M' || r.mfOnly) fg.append(slider('mf', 'Vòng lấy nét|Focus ring', 0, 1000, 1, () => mfToSlider(S.mf, r), v => { S.mf = sliderToMf(v, r); }, v => fmtDist(sliderToMf(v, r)), { hint: d.kind === 'ml' || S.vf === 'lv' ? 'Bật Viền nét (Focus peaking) để thấy viền đỏ ở vùng nét.' : 'Nhìn qua kính ngắm và vặn tới khi chủ thể nét.' }));
+      else fg.append(h('button', { class: 'btn ghost', type: 'button', onclick: () => { autoFocus(rig()); touch(); } }, lb('Lấy nét lại – nhấn nửa nút chụp|Shutter half-press')));
       host.append(fg);
       host.append(colorGroup(r));
       host.append(accessoryGroup(r));
     } else {
       const p = d;
-      host.append(group('Chế độ', seg('pm', null, [['photo', 'Ảnh'], ['portrait', 'Chân dung'], ...(p.pro ? [['pro', p.pro.label]] : []), ...(p.third ? [['third', p.third.label]] : [])], () => S.phone.mode, v => { S.phone.mode = v; const ps = proSpec(); if (ps && !ps.proCams.includes(S.phone.cam)) S.phone.cam = 'w'; }, { rebuild: true, wrap: true }),
+      host.append(group('Chế độ chụp|Camera mode', seg('pm', null, [['photo', 'Ảnh|Photo'], ['portrait', 'Chân dung|Portrait'], ...(p.pro ? [['pro', p.pro.label]] : []), ...(p.third ? [['third', p.third.label]] : [])], () => S.phone.mode, v => { S.phone.mode = v; const ps = proSpec(); if (ps && !ps.proCams.includes(S.phone.cam)) S.phone.cam = 'w'; }, { rebuild: true, wrap: true }),
         h('p', { class: 'hint' }, ({ photo: 'Máy tự xử lý: đo sáng thông minh, HDR ghép nhiều khung, giảm nhiễu mạnh.', portrait: 'Xóa phông bằng phần mềm dựa trên bản đồ độ sâu. Kéo “Khẩu độ ảo” để đổi độ mờ.', pro: 'Chỉnh tay như máy ảnh. Khẩu độ ' + (r.Ns ? 'có 4 nấc cố định.' : 'cố định trên điện thoại này.'), third: 'App bên thứ ba truy cập trực tiếp cảm biến: ISO, tốc độ, cân bằng trắng, lấy nét tay.' })[S.phone.mode])));
       const ps = proSpec();
       const camsAvail = p.cams.filter(c => !ps || ps.proCams.includes(c.id));
-      host.append(group('Camera', seg('pc', null, camsAvail.map(c => [c.id, c.label === 'Macro' ? 'Macro' : c.label + '×', `${c.feq} mm tương đương · ${fmtN(c.N)} · ${c.mp} MP · ${D.SENSORS[c.sensor].name}`]), () => S.phone.cam, v => setPhoneCam(v), { rebuild: true }),
+      host.append(group('Ống kính|Camera', seg('pc', null, camsAvail.map(c => [c.id, c.label === 'Macro' ? 'Macro' : c.label + '×', `${c.feq} mm tương đương · ${fmtN(c.N)} · ${c.mp} MP · ${D.SENSORS[c.sensor].name}`]), () => S.phone.cam, v => setPhoneCam(v), { rebuild: true }),
         h('p', { class: 'hint' }, `${r.cam.mp} MP · cảm biến ${D.SENSORS[r.cam.sensor].name}${r.cam.crop ? ' (cắt giữa cảm biến)' : ''} · tiêu cự thật ${r.fOpt.toFixed(1)} mm (≈ ${r.feq} mm FF) · ${r.Ns ? r.Ns.map(fmtN).join(' / ') : fmtN(r.Nwide)}${r.fixedFocus ? ' · lấy nét cố định' : ''}`)));
-      if (S.phone.mode === 'portrait') host.append(group('Xóa phông ảo', dial('vN', 'Khẩu độ ảo', { list: () => [1.4, 2, 2.8, 4, 5.6, 8, 11, 16], idx: l => l.indexOf(U.nearest(l, S.phone.vN)), set: v => { S.phone.vN = v; } })));
+      if (S.phone.mode === 'portrait') host.append(group('Xóa phông ảo|Portrait · Depth control', dial('vN', 'Khẩu độ ảo|f-stop', { list: () => [1.4, 2, 2.8, 4, 5.6, 8, 11, 16], idx: l => l.indexOf(U.nearest(l, S.phone.vN)), set: v => { S.phone.vN = v; } })));
       if (ps) {
-        const exg = group('Thông số chụp');
-        if (r.Ns && ps.apMode === 'list') exg.append(dial('N', 'Khẩu độ', { list: () => r.Ns, idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.N : S.N)), set: v => { S.N = v; } }));
+        const exg = group('Thông số chụp|Pro settings');
+        if (r.Ns && ps.apMode === 'list') exg.append(dial('N', 'Khẩu độ|Aperture', { list: () => r.Ns, idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.N : S.N)), set: v => { S.N = v; } }));
         const tAutoAllowed = S.phone.mode !== 'third';
-        exg.append(dial('t', 'Tốc độ (S)', { auto: tAutoAllowed, list: () => U.SHUTTERS.filter(x => x >= ps.shutter[0] * 0.99 && x <= ps.shutter[1] * 1.01), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.t : S.t)), set: v => { S.t = v; S.phone.tAuto = false; if (ps.samsungRule) { S.phone.isoAuto = false; S.iso = lastExp ? lastExp.iso : S.iso; } }, toggleAuto: () => { S.phone.tAuto = !S.phone.tAuto; } }));
-        if (ps.isoManual) exg.append(dial('iso', 'ISO', { auto: S.phone.mode !== 'third', list: () => U.ISOS.filter(x => x >= ps.iso[0] && x <= ps.iso[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.iso : S.iso)), set: v => { S.iso = v; S.phone.isoAuto = false; }, toggleAuto: () => { S.phone.isoAuto = !S.phone.isoAuto; if (ps.samsungRule && S.phone.isoAuto) S.phone.tAuto = true; } }));
+        exg.append(dial('t', 'Tốc độ màn trập|Shutter speed · S', { auto: tAutoAllowed, list: () => U.SHUTTERS.filter(x => x >= ps.shutter[0] * 0.99 && x <= ps.shutter[1] * 1.01), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.t : S.t)), set: v => { S.t = v; S.phone.tAuto = false; if (ps.samsungRule) { S.phone.isoAuto = false; S.iso = lastExp ? lastExp.iso : S.iso; } }, toggleAuto: () => { S.phone.tAuto = !S.phone.tAuto; } }));
+        if (ps.isoManual) exg.append(dial('iso', 'Độ nhạy sáng|ISO', { auto: S.phone.mode !== 'third', list: () => U.ISOS.filter(x => x >= ps.iso[0] && x <= ps.iso[1]), idx: l => l.indexOf(U.nearest(l, lastExp ? lastExp.iso : S.iso)), set: v => { S.iso = v; S.phone.isoAuto = false; }, toggleAuto: () => { S.phone.isoAuto = !S.phone.isoAuto; if (ps.samsungRule && S.phone.isoAuto) S.phone.tAuto = true; } }));
         else exg.append(h('p', { class: 'hint' }, 'ISO do máy tự chọn theo khẩu và tốc độ bạn đặt.'));
-        if (ps.ev) exg.append(dial('ec', 'Bù sáng (EV)', { list: () => Array.from({ length: 13 }, (_, i) => (i - 6) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }));
+        if (ps.ev) exg.append(dial('ec', 'Bù sáng|EV', { list: () => Array.from({ length: 13 }, (_, i) => (i - 6) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }));
         if (ps.samsungRule) exg.append(h('p', { class: 'hint' }, 'Trên Samsung: khi chỉnh tốc độ bằng tay, ISO cũng chuyển sang chỉnh tay và EV bị khóa.'));
-        exg.append(seg('met', 'Đo sáng', [['evaluative', 'Ma trận'], ['center', 'Trung tâm'], ['spot', 'Điểm']], () => S.metering, v => { S.metering = v; }));
+        exg.append(seg('met', 'Chế độ đo sáng|Metering', [['evaluative', 'Ma trận|Matrix'], ['center', 'Trung tâm|Center-weighted'], ['spot', 'Điểm|Spot']], () => S.metering, v => { S.metering = v; }));
         host.append(exg);
-        const fg = group('Lấy nét');
+        const fg = group('Lấy nét|Focus');
         if (!r.fixedFocus) {
-          fg.append(seg('af', null, [['S', 'Tự động'], ['M', 'Lấy nét tay (MF)']], () => S.afMode === 'M' ? 'M' : 'S', v => { S.afMode = v; if (v === 'S') S.afArea = 'eye'; }, { rebuild: true }));
-          if (S.afMode === 'M') fg.append(slider('mf', 'Khoảng lấy nét', 0, 1000, 1, () => mfToSlider(S.mf, r), v => { S.mf = sliderToMf(v, r); }, v => fmtDist(sliderToMf(v, r)), { hint: 'Bật Focus peaking để thấy vùng nét.' }));
+          fg.append(seg('af', null, [['S', 'Tự động|AF'], ['M', 'Lấy nét tay|MF']], () => S.afMode === 'M' ? 'M' : 'S', v => { S.afMode = v; if (v === 'S') S.afArea = 'eye'; }, { rebuild: true }));
+          if (S.afMode === 'M') fg.append(slider('mf', 'Khoảng lấy nét|Manual focus', 0, 1000, 1, () => mfToSlider(S.mf, r), v => { S.mf = sliderToMf(v, r); }, v => fmtDist(sliderToMf(v, r)), { hint: 'Bật Viền nét (Focus peaking) để thấy vùng nét.' }));
           else fg.append(h('p', { class: 'hint' }, 'Chạm vào màn hình để chọn điểm lấy nét.'));
         } else fg.append(h('p', { class: 'hint' }, 'Camera này lấy nét cố định.'));
         host.append(fg);
       } else {
-        const exg = group('Điều chỉnh', dial('ec', 'Bù sáng', { list: () => Array.from({ length: 13 }, (_, i) => (i - 6) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }), h('p', { class: 'hint' }, 'Chạm vào màn hình để chọn điểm lấy nét.'));
+        const exg = group('Điều chỉnh|Adjust', dial('ec', 'Bù sáng|EV', { list: () => Array.from({ length: 13 }, (_, i) => (i - 6) / 3), idx: l => l.findIndex(x => Math.abs(x - S.ec) < 0.01), set: v => { S.ec = v; } }), h('p', { class: 'hint' }, 'Chạm vào màn hình để chọn điểm lấy nét.'));
         host.append(exg);
       }
       host.append(colorGroup(r));
@@ -580,24 +586,24 @@ const SIM = (() => {
       const mm = sceneMeta();
       host.append(group('Vị trí chụp',
         h('p', { class: 'hint' }, `Ảnh thật nên vị trí đứng cố định: chủ thể cách máy khoảng ${fmtDist(mm.D)}. Đổi tiêu cự chỉ là cắt khung (zoom), phối cảnh không đổi – muốn học phối cảnh, dùng nhóm cảnh dựng 2.5D.`),
-        h('div', { class: 'togs' }, toggle('Cầm máy dọc', () => !!S.vertical, v => { S.vertical = v; resizeViewer(); }, { title: 'Xoay máy 90° để chụp khung dọc' }), mm.moving ? toggle('Lia máy theo chủ thể', () => S.pan, v => { S.pan = v; }) : null)));
+        h('div', { class: 'togs' }, toggle('Cầm máy dọc|Vertical', () => !!S.vertical, v => { S.vertical = v; resizeViewer(); }, { title: 'Xoay máy 90° để chụp khung dọc' }), mm.moving ? toggle('Lia máy theo chủ thể|Panning', () => S.pan, v => { S.pan = v; }) : null)));
     } else host.append(group('Vị trí chụp',
       slider('D', 'Khoảng cách tới chủ thể', 0, 1000, 1, () => dToSlider(S.D), v => { S.D = sliderToD(v); if (S.afMode !== 'M') autoFocus(rig()); }, v => fmtDist(sliderToD(v)), { hint: 'Đổi vị trí đứng làm thay đổi phối cảnh.' }),
       h('div', { class: 'togs' },
         toggle('Giữ cỡ chủ thể khi zoom', () => S.keepSize, v => { S.keepSize = v; }, { title: 'Tự lùi/tiến khi đổi tiêu cự – bài tập Tuần 7' }),
-        sceneMeta().moving ? toggle('Lia máy theo chủ thể', () => S.pan, v => { S.pan = v; }) : null,
+        sceneMeta().moving ? toggle('Lia máy theo chủ thể|Panning', () => S.pan, v => { S.pan = v; }) : null,
         S.scene === 'street' ? toggle('Xe chạy về phía máy', () => S.approach, v => { S.approach = v; if (v) S.freeze = false; }, { rebuild: true }) : null,
         sceneMeta().moving ? toggle('Chủ thể đứng giữa khung', () => S.freeze, v => { S.freeze = v; }, { title: 'Tắt để chủ thể chạy qua khung hình – bạn phải canh khoảnh khắc' }) : null)));
-    const dg = group('Hiển thị');
-    if (!r.phone && d.kind === 'dslr') dg.append(seg('vf', 'Ngắm qua', [['ovf', 'Kính ngắm quang'], ['lv', 'Live View']], () => S.vf, v => { S.vf = v; }, { rebuild: true }));
+    const dg = group('Hiển thị|Display');
+    if (!r.phone && d.kind === 'dslr') dg.append(seg('vf', 'Ngắm qua|Viewfinder', [['ovf', 'Kính ngắm quang|OVF'], ['lv', 'Màn hình|Live View']], () => S.vf, v => { S.vf = v; }, { rebuild: true }));
     dg.append(h('div', { class: 'togs' },
-      toggle('Histogram', () => S.disp.hist, v => { S.disp.hist = v; $('#lab-hist').hidden = !v; }),
-      toggle('Lưới 1/3', () => S.disp.grid, v => { S.disp.grid = v; }),
-      r.phone || d.kind === 'ml' ? toggle('Zebra', () => S.disp.zebra, v => { S.disp.zebra = v; }, { title: 'Sọc chéo ở vùng sắp cháy sáng' }) : null,
-      r.phone || d.kind === 'ml' || S.vf === 'lv' ? toggle('Focus peaking', () => S.disp.peaking, v => { S.disp.peaking = v; }) : null,
-      toggle('Nháy vùng cháy khi xem lại', () => S.disp.clip, v => { S.disp.clip = v; })));
+      toggle('Biểu đồ sáng|Histogram', () => S.disp.hist, v => { S.disp.hist = v; $('#lab-hist').hidden = !v; }),
+      toggle('Lưới 1/3|Grid', () => S.disp.grid, v => { S.disp.grid = v; }),
+      r.phone || d.kind === 'ml' ? toggle('Sọc cảnh báo|Zebra', () => S.disp.zebra, v => { S.disp.zebra = v; }, { title: 'Sọc chéo ở vùng sắp cháy sáng' }) : null,
+      r.phone || d.kind === 'ml' || S.vf === 'lv' ? toggle('Viền nét|Focus peaking', () => S.disp.peaking, v => { S.disp.peaking = v; }) : null,
+      toggle('Nháy vùng cháy khi xem lại|Highlight alert', () => S.disp.clip, v => { S.disp.clip = v; })));
     if (!r.phone && d.kind === 'dslr' && S.vf === 'ovf') {
-      const b = h('button', { class: 'btn ghost', type: 'button' }, 'Giữ để xem trước độ sâu trường ảnh');
+      const b = h('button', { class: 'btn ghost', type: 'button' }, lb('Giữ để xem trước độ sâu trường ảnh|DoF preview'));
       const on = () => { S.dofPreview = true; touch(); }, off = () => { S.dofPreview = false; touch(); };
       b.addEventListener('pointerdown', on); b.addEventListener('pointerup', off); b.addEventListener('pointerleave', off);
       b.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); on(); } });
@@ -607,27 +613,30 @@ const SIM = (() => {
     host.append(dg);
     updateDevChrome();
   }
+  const WB_T = { auto: 'Tự động|AWB', day: 'Ánh nắng|Daylight', cloud: 'Trời mây|Cloudy', shade: 'Bóng râm|Shade', tung: 'Đèn sợi đốt|Tungsten', fluo: 'Huỳnh quang|Fluorescent', flash: 'Đèn flash|Flash', k: 'Nhiệt độ màu|K' };
+  const STYLE_T = { std: 'Chuẩn|Standard', land: 'Phong cảnh|Landscape', port: 'Chân dung|Portrait', neu: 'Trung tính|Neutral', mono: 'Đơn sắc|Monochrome' };
+  const FILTER_T = { none: 'Không dùng|None', cpl: 'Phân cực|CPL', gnd: 'Chuyển độ 3 stop, nửa trên tối|GND', nd3: 'Giảm sáng 3 stop|ND8', nd6: 'Giảm sáng 6 stop|ND64', nd10: 'Giảm sáng 10 stop|ND1000' };
   function colorGroup(r) {
     const auto = r.phone && (S.phone.mode === 'photo' || S.phone.mode === 'portrait');
-    const g = group('Màu sắc');
-    if (auto) { g.append(h('p', { class: 'hint' }, 'Chế độ tự động: cân bằng trắng do máy chọn.')); return g; }
+    const g = group('Màu sắc|Color');
+    if (auto) { g.append(h('p', { class: 'hint' }, 'Chế độ tự động: cân bằng trắng (White balance) do máy chọn.')); return g; }
     const presets = r.phone ? D.WB_PRESETS.filter(w => ['auto', 'k'].includes(w.id)) : D.WB_PRESETS;
-    g.append(seg('wb', 'Cân bằng trắng', presets.map(w => [w.id, w.name]), () => S.wb, v => { S.wb = v; if (v !== 'k' && v !== 'auto') S.wbK = D.WB_PRESETS.find(w => w.id === v).K; }, { rebuild: true, wrap: true }));
-    if (S.wb === 'k') g.append(slider('wbK', 'Nhiệt độ màu', 2300, 10000, 100, () => S.wbK, v => { S.wbK = v; }, v => `${v} K`, { hint: 'Đặt số K bằng nhiệt độ màu của nguồn sáng để màu trắng trung tính.' }));
-    if (!r.phone) { const s = h('select', { class: 'sel', 'aria-label': 'Picture Style' }, ...D.STYLES.map(st => h('option', { value: st.id, selected: st.id === S.style ? true : null }, st.name))); s.onchange = () => { S.style = s.value; touch(); }; g.append(h('div', { class: 'field' }, h('div', { class: 'field-label' }, 'Chế độ ảnh (Picture Style)'), s)); }
+    g.append(seg('wb', 'Cân bằng trắng|White balance', presets.map(w => [w.id, WB_T[w.id] || w.name]), () => S.wb, v => { S.wb = v; if (v !== 'k' && v !== 'auto') S.wbK = D.WB_PRESETS.find(w => w.id === v).K; }, { rebuild: true, wrap: true }));
+    if (S.wb === 'k') g.append(slider('wbK', 'Nhiệt độ màu|Color temperature', 2300, 10000, 100, () => S.wbK, v => { S.wbK = v; }, v => `${v} K`, { hint: 'Đặt số K bằng nhiệt độ màu của nguồn sáng để màu trắng trung tính.' }));
+    if (!r.phone) { const s = h('select', { class: 'sel', 'aria-label': 'Phong cách ảnh (Picture Style)' }, ...D.STYLES.map(st => h('option', { value: st.id, selected: st.id === S.style ? true : null }, plain(STYLE_T[st.id] || st.name)))); s.onchange = () => { S.style = s.value; touch(); }; g.append(h('div', { class: 'field' }, h('div', { class: 'field-label' }, h('span', null, lb('Phong cách ảnh|Picture Style'))), s)); }
     return g;
   }
   function accessoryGroup(r) {
-    const g = group('Phụ kiện & ánh sáng');
-    g.append(seg('sup', 'Giữ máy', [['hand', 'Cầm tay'], ['tripod', 'Tripod']], () => S.support, v => { S.support = v; }));
+    const g = group('Phụ kiện & đèn flash|Accessories & Flash');
+    g.append(seg('sup', 'Giữ máy|Support', [['hand', 'Cầm tay|Handheld'], ['tripod', 'Chân máy|Tripod']], () => S.support, v => { S.support = v; }));
     if (!r.phone) {
-      const fs = h('select', { class: 'sel', 'aria-label': 'Kính lọc' }, ...D.FILTERS.map(f => h('option', { value: f.id, selected: f.id === S.filter ? true : null }, f.name)));
+      const fs = h('select', { class: 'sel', 'aria-label': 'Kính lọc (Filter)' }, ...D.FILTERS.map(f => h('option', { value: f.id, selected: f.id === S.filter ? true : null }, plain(FILTER_T[f.id] || f.name))));
       fs.onchange = () => { S.filter = fs.value; touch(); };
-      g.append(h('div', { class: 'field' }, h('div', { class: 'field-label' }, 'Kính lọc'), fs));
+      g.append(h('div', { class: 'field' }, h('div', { class: 'field-label' }, h('span', null, lb('Kính lọc|Filter'))), fs));
     }
-    const fl = [['off', 'Tắt'], ['fill', 'Bù sáng (fill)'], ['on', 'Chính']];
-    g.append(seg('fl', r.phone ? 'Đèn LED' : (r.dev.popup ? 'Flash' : 'Flash rời GN 40'), fl, () => S.flash, v => { S.flash = v; }));
-    if (!r.phone && r.dev.popup) g.append(h('div', { class: 'togs' }, toggle('Dùng flash rời GN 40', () => S.speedlite, v => { S.speedlite = v; })));
+    const fl = [['off', 'Tắt|Off'], ['fill', 'Đèn phụ|Fill flash'], ['on', 'Đèn chính|Flash on']];
+    g.append(seg('fl', r.phone ? 'Đèn LED|Flash' : (r.dev.popup ? 'Đèn flash|Flash' : 'Đèn flash rời GN 40|Speedlite'), fl, () => S.flash, v => { S.flash = v; }));
+    if (!r.phone && r.dev.popup) g.append(h('div', { class: 'togs' }, toggle('Dùng đèn flash rời GN 40|Speedlite', () => S.speedlite, v => { S.speedlite = v; })));
     return g;
   }
   // thang trượt log cho khoảng cách
