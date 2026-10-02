@@ -23,24 +23,24 @@
  ],
  "subject": {
   "name": "Người trượt ván",
-  "x": 0.5112,
-  "y": 0.9325,
-  "Z": 6.0,
+  "x": 0.48,
+  "y": 0.45,
+  "Z": 7.0,
   "box": [
-   0.0,
-   0.8313,
-   0.9994,
-   0.9991
+   0.3431,
+   0.2596,
+   0.5769,
+   0.8491
   ],
   "eye": [
-   0.4997,
-   0.8615
+   0.46,
+   0.3657
   ],
   "face": null
  },
  "depth": {
-  "alpha": 6.3391,
-  "beta": -0.158478,
+  "alpha": 5.456922,
+  "beta": -0.136423,
   "bgDist": 40.0
  },
  "motion": {
@@ -48,7 +48,7 @@
   "dir": 0
  },
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.12,
  "credit": {
   "author": "Julio Cesar Godinez",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

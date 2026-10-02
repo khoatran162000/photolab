@@ -15,6 +15,7 @@ Cách dùng (chạy ở thư mục gốc của repo):
   python3 tools/tao_goi_canh.py               # tạo các gói còn thiếu
   python3 tools/tao_goi_canh.py --force       # tạo lại tất cả
   python3 tools/tao_goi_canh.py --only pho-ha-noi,bmx
+  python3 tools/tao_goi_canh.py --dung-anh-san --force   # tạo lại từ ảnh đã tải (sau khi sửa catalog)
 
 Muốn tự vẽ vùng chủ thể: đặt file scenes/<id>/mask-tay.png (trắng = chủ thể, cùng tỉ lệ ảnh)
 rồi chạy lại với --only <id> --force; file vẽ tay được ưu tiên hơn mặt nạ tự động.
@@ -143,6 +144,37 @@ def estimate_depth(rgb):
 
 
 # ---------------- chủ thể ----------------
+def mask_from_box(d, rgb, box, hint):
+    """Tách chủ thể bằng GrabCut khởi tạo từ khung chữ nhật (tọa độ 0..1), loại bớt vùng quá xa theo độ sâu."""
+    h, w = d.shape
+    sc = min(1.0, 900 / max(w, h))
+    sm = cv2.resize(rgb, None, fx=sc, fy=sc, interpolation=cv2.INTER_AREA)
+    H, W = sm.shape[:2]
+    x0, y0, x1, y1 = int(box[0] * W), int(box[1] * H), int(box[2] * W), int(box[3] * H)
+    x0, y0 = max(0, x0), max(0, y0); x1, y1 = min(W - 1, max(x0 + 4, x1)), min(H - 1, max(y0 + 4, y1))
+    gc = np.zeros((H, W), np.uint8)
+    bgd, fgd = np.zeros((1, 65), np.float64), np.zeros((1, 65), np.float64)
+    cv2.grabCut(cv2.cvtColor(sm, cv2.COLOR_RGB2BGR), gc, (x0, y0, x1 - x0, y1 - y0), bgd, fgd, 6, cv2.GC_INIT_WITH_RECT)
+    ref = np.where((gc == cv2.GC_FGD) | (gc == cv2.GC_PR_FGD), 255, 0).astype(np.uint8)
+    hx, hy = (int(hint[0] * W), int(hint[1] * H)) if isinstance(hint, (list, tuple)) else ((x0 + x1) // 2, (y0 + y1) // 2)
+    ds = cv2.resize(d, (W, H))
+    dref = float(np.median(ds[ref > 0])) if ref.any() else float(ds[hy, hx])
+    ref[ds < dref - 0.3] = 0  # bỏ phần hậu cảnh xa lọt vào khung
+    n, lab, stats, _ = cv2.connectedComponentsWithStats(ref, 8)
+    if n > 1:
+        k = lab[min(H - 1, hy), min(W - 1, hx)]
+        if k == 0:
+            k = 1 + int(np.argmax(stats[1:, cv2.CC_STAT_AREA]))
+        ref = ((lab == k) * 255).astype(np.uint8)
+    mask = cv2.resize(ref, (w, h), interpolation=cv2.INTER_LINEAR)
+    mask = (mask > 127).astype(np.uint8) * 255
+    if mask.mean() / 255 < 0.0005:
+        mask[int(box[1] * h):int(box[3] * h), int(box[0] * w):int(box[2] * w)] = 255
+    ys, xs = np.where(mask > 0)
+    pt = (hint[0], hint[1]) if isinstance(hint, (list, tuple)) else (xs.mean() / w, ys.mean() / h)
+    return mask, pt
+
+
 def subject_mask(d, rgb, hint, tol):
     h, w = d.shape
     if isinstance(hint, (list, tuple)):
@@ -204,21 +236,40 @@ def feather(mask, r=3):
 
 
 # ---------------- xử lý một cảnh ----------------
-def build(entry, force=False):
+def make_thumb(out, img=None):
+    """Ảnh nhỏ cho nút chọn cảnh (khoảng 12 KB)."""
+    img = img or Image.open(out / 'photo.jpg')
+    t = img.convert('RGB').copy()
+    t.thumbnail((320, 220), Image.LANCZOS)
+    t.save(out / 'thumb.jpg', quality=78, optimize=True, progressive=True)
+
+
+def build(entry, force=False, reuse=False):
     sid = entry['id']
     out = SCENES / sid
     if (out / 'scene.json').exists() and not force:
         log(f'• {sid}: đã có, bỏ qua (dùng --force để tạo lại)')
         return json.loads((out / 'scene.json').read_text('utf-8'))
     log(f'• {sid}: {entry.get("title", "")}')
-    img, page_exif, author, page = load_source(entry['source'])
+    old = json.loads((out / 'scene.json').read_text('utf-8')) if (out / 'scene.json').exists() else None
+    reused = reuse and (out / 'photo.jpg').exists()
+    if reused:  # dùng lại ảnh đã tải, không tải lại từ mạng
+        img = Image.open(out / 'photo.jpg')
+        page_exif = (old or {}).get('src', {})
+        author = ((old or {}).get('credit') or {}).get('author', '')
+        page = ((old or {}).get('credit') or {}).get('page', '')
+        log('  dùng lại ảnh đã tải')
+    else:
+        img, page_exif, author, page = load_source(entry['source'])
     exif = {**entry.get('exif', {}), **page_exif, **read_exif(img)}
     img = ImageOps.exif_transpose(img).convert('RGB')
     if max(img.size) > MAX_SIDE:
         s = MAX_SIDE / max(img.size)
         img = img.resize((round(img.width * s), round(img.height * s)), Image.LANCZOS)
     out.mkdir(parents=True, exist_ok=True)
-    img.save(out / 'photo.jpg', quality=88, optimize=True, progressive=True)
+    if not reused:
+        img.save(out / 'photo.jpg', quality=88, optimize=True, progressive=True)
+    make_thumb(out, img)
     rgb = np.asarray(img)
     h, w = rgb.shape[:2]
 
@@ -234,6 +285,8 @@ def build(entry, force=False):
         ys, xs = np.where(mask > 0)
         pt = (xs.mean() / w, ys.mean() / h) if len(xs) else (0.5, 0.5)
         log('  dùng mặt nạ vẽ tay')
+    elif subj.get('box'):
+        mask, pt = mask_from_box(d, rgb, subj['box'], subj.get('hint', 'center'))
     else:
         mask, pt = subject_mask(d, rgb, subj.get('hint', 'nearest'), subj.get('tol', 0.09))
     Image.fromarray(feather(mask)).save(out / 'mask.png', optimize=True)
@@ -248,6 +301,11 @@ def build(entry, force=False):
             cas = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
             gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
             fs = cas.detectMultiScale(gray, 1.1, 5, minSize=(max(20, w // 40), max(20, w // 40)))
+            # chỉ nhận khuôn mặt nằm trong vùng chủ thể (tránh nhận nhầm hoa văn, bóng tối)
+            bx0, by0, bx1, by1 = box[0] * w, box[1] * h, box[2] * w, box[3] * h
+            mx, my = (bx1 - bx0) * 0.1, (by1 - by0) * 0.1
+            fs = [f for f in fs if bx0 - mx <= f[0] + f[2] / 2 <= bx1 + mx and by0 - my <= f[1] + f[3] / 2 <= by1 + my
+                  and mask[min(h - 1, int(f[1] + f[3] / 2)), min(w - 1, int(f[0] + f[2] / 2))] > 0]
             if len(fs):
                 fx, fy, fw, fh = max(fs, key=lambda r: r[2] * r[3])
                 face = [round(fx / w, 4), round(fy / h, 4), round((fx + fw) / w, 4), round((fy + fh) / h, 4)]
@@ -310,6 +368,7 @@ def main():
     ap.add_argument('--force', action='store_true', help='tạo lại cả gói đã có')
     ap.add_argument('--only', default='', help='chỉ tạo các id (phân cách bằng dấu phẩy)')
     ap.add_argument('--catalog', default=str(SCENES / 'catalog.json'))
+    ap.add_argument('--dung-anh-san', dest='reuse', action='store_true', help='dùng lại photo.jpg đã có (không tải lại) – dùng khi chỉ sửa thông số trong catalog')
     a = ap.parse_args()
     cat = json.loads(Path(a.catalog).read_text('utf-8'))
     only = set(x for x in a.only.split(',') if x)
@@ -320,7 +379,7 @@ def main():
         if e.get('skip'):
             continue
         try:
-            build(e, a.force or bool(only and a.force))
+            build(e, a.force, a.reuse)
             done.append(e['id'])
         except Exception as ex:
             fail.append((e['id'], str(ex)))
@@ -331,7 +390,9 @@ def main():
         p = SCENES / e['id'] / 'scene.json'
         if p.exists():
             s = json.loads(p.read_text('utf-8'))
-            idx.append({k: s[k] for k in ('id', 'title', 'place', 'light', 'kinds')})
+            if not (SCENES / e['id'] / 'thumb.jpg').exists() and (SCENES / e['id'] / 'photo.jpg').exists():
+                make_thumb(SCENES / e['id'])
+            idx.append({**{k: s[k] for k in ('id', 'title', 'place', 'light', 'kinds')}, 'thumb': 'thumb.jpg'})
     (SCENES / 'index.json').write_text(json.dumps({'scenes': idx}, ensure_ascii=False, indent=1), 'utf-8')
     log(f'\nĐã có {len(idx)} gói cảnh trong scenes/index.json.')
     if fail:

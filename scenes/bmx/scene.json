@@ -24,24 +24,24 @@
  ],
  "subject": {
   "name": "Người lái BMX",
-  "x": 0.52,
-  "y": 0.5682,
+  "x": 0.55,
+  "y": 0.45,
   "Z": 12.0,
   "box": [
    0.41,
-   0.3857,
-   0.6269,
-   0.715
+   0.2427,
+   0.6219,
+   0.7686
   ],
   "eye": [
-   0.5184,
-   0.5503
+   0.5159,
+   0.5056
   ],
   "face": null
  },
  "depth": {
-  "alpha": 14.176471,
-  "beta": -0.236275,
+  "alpha": 12.705882,
+  "beta": -0.211765,
   "bgDist": 60.0
  },
  "motion": {
@@ -49,7 +49,7 @@
   "dir": 0
  },
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": -1.09,
  "credit": {
   "author": "Roberto Vazquez",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

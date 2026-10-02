@@ -23,30 +23,30 @@
   1600
  ],
  "subject": {
-  "name": "Bàn gỗ",
-  "x": 0.455,
-  "y": 0.93,
-  "Z": 2.0,
+  "name": "Gương và bàn",
+  "x": 0.5,
+  "y": 0.4,
+  "Z": 3.0,
   "box": [
-   0.0,
-   0.84,
-   0.8975,
-   0.9994
+   0.3258,
+   0.2125,
+   0.6392,
+   0.7794
   ],
   "eye": [
-   0.4487,
-   0.9197
+   0.4825,
+   0.4959
   ],
   "face": null
  },
  "depth": {
-  "alpha": 2.552941,
-  "beta": -0.413725,
-  "bgDist": 6.0
+  "alpha": 1.482353,
+  "beta": -0.317647,
+  "bgDist": 4.5
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": -0.01,
  "credit": {
   "author": "Abishkaar Chettri",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

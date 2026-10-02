@@ -18,29 +18,29 @@
  ],
  "subject": {
   "name": "Tách cà phê",
-  "x": 0.47,
-  "y": 0.5525,
+  "x": 0.45,
+  "y": 0.4,
   "Z": 0.55,
   "box": [
-   0.285,
-   0.37,
-   0.6567,
-   0.795
+   0.1217,
+   0.045,
+   0.795,
+   0.9775
   ],
   "eye": [
-   0.4708,
-   0.5825
+   0.4583,
+   0.5112
   ],
   "face": null
  },
  "depth": {
-  "alpha": 0.742415,
-  "beta": -0.408669,
+  "alpha": 0.674303,
+  "beta": -0.402477,
   "bgDist": 1.5
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.44,
  "credit": {
   "author": "Rachel Michetti",
   "license": "CC0",

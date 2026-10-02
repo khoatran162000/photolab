@@ -7,7 +7,7 @@ const SIM = (() => {
 
   const S = {
     device: 'ml_ff', lens: 'p85', focal: 85, scene: 'portrait',
-    mode: 'A', N: 2, t: 1 / 250, iso: 100, isoAuto: true, ec: 0, pshift: 0,
+    mode: 'A', N: 5.6, t: 1 / 250, iso: 100, isoAuto: true, ec: 0, pshift: 0,
     wb: 'auto', wbK: 5200, metering: 'evaluative', style: 'std',
     afMode: 'S', afArea: 'eye', afPoint: [0.5, 0.45], mf: 3, focus: 2.5,
     support: 'hand', is: true, filter: 'none', flash: 'off', speedlite: false,
@@ -65,6 +65,7 @@ const SIM = (() => {
         isStops: (S.is ? Math.max(L.is, d.ibis) + (L.is && d.ibis ? 0.5 : 0) : 0), blades: L.blades, dist: U.lerp(L.dist[0], L.dist[1], tt),
         vig: L.vig, ca: L.ca, fisheye: !!L.fisheye, imageCircle: ic, lens: L, mfOnly: !!L.mfOnly, tilt: !!L.tilt });
     }
+    if (S.vertical) r.sensor = Object.assign({}, r.sensor, { w: r.sensor.h, h: r.sensor.w });
     r.crop = r.sensor.crop;
     return r;
   }
@@ -579,7 +580,7 @@ const SIM = (() => {
       const mm = sceneMeta();
       host.append(group('Vị trí chụp',
         h('p', { class: 'hint' }, `Ảnh thật nên vị trí đứng cố định: chủ thể cách máy khoảng ${fmtDist(mm.D)}. Đổi tiêu cự chỉ là cắt khung (zoom), phối cảnh không đổi – muốn học phối cảnh, dùng nhóm cảnh dựng 2.5D.`),
-        mm.moving ? h('div', { class: 'togs' }, toggle('Lia máy theo chủ thể', () => S.pan, v => { S.pan = v; })) : null));
+        h('div', { class: 'togs' }, toggle('Cầm máy dọc', () => !!S.vertical, v => { S.vertical = v; resizeViewer(); }, { title: 'Xoay máy 90° để chụp khung dọc' }), mm.moving ? toggle('Lia máy theo chủ thể', () => S.pan, v => { S.pan = v; }) : null)));
     } else host.append(group('Vị trí chụp',
       slider('D', 'Khoảng cách tới chủ thể', 0, 1000, 1, () => dToSlider(S.D), v => { S.D = sliderToD(v); if (S.afMode !== 'M') autoFocus(rig()); }, v => fmtDist(sliderToD(v)), { hint: 'Đổi vị trí đứng làm thay đổi phối cảnh.' }),
       h('div', { class: 'togs' },
@@ -666,12 +667,31 @@ const SIM = (() => {
     if (isPhoto()) {
       const pid = photoId();
       showLoading(true); buildScenePicker(); updateCredit();
-      PH.load(pid).then(() => { if (S.scene !== id) return; const sm = sceneMeta(); S.D = sm.D; S.mf = sm.D; lastMeter = null; render(); autoFocus(rig()); rebuildPanel(); updateCredit(); touch(); })
+      PH.load(pid).then(pk => { if (S.scene !== id) return; const sm = sceneMeta(); S.D = sm.D; S.mf = sm.D; lastMeter = null; const v = pk.h > pk.w * 1.05; if (v !== !!S.vertical) { S.vertical = v; resizeViewer(); } fitPhoto(sm.meta); render(); autoFocus(rig()); rebuildPanel(); updateCredit(); touch(); })
         .catch(err => { showLoading(true, 'Không tải được gói cảnh: ' + err.message); });
       return;
     }
     const sm = sceneMeta(); S.D = sm.D; S.mf = sm.D;
+    if (S.vertical) { S.vertical = false; resizeViewer(); }
     autoFocus(rig()); rebuildPanel(); buildScenePicker(); updateCredit(); touch();
+  }
+  // Khi mở một ảnh thật mà tiêu cự đang dùng hẹp hơn nhiều so với ảnh gốc, đổi sang ống zoom phù hợp để thấy trọn ảnh
+  function fitPhoto(meta) {
+    if (!meta) return;
+    const r = rig(), src = meta.feq || 26;
+    if (r.phone) {
+      if (r.feq > src * 1.6) { const main = r.dev.cams.find(c => c.main) || r.dev.cams[0]; S.phone.cam = main.id; }
+      return;
+    }
+    const want = src / r.crop;                       // tiêu cự thật cho góc nhìn bằng ảnh gốc
+    const L0 = r.lens;
+    if (L0 && L0.fr[0] !== L0.fr[1] && !L0.tilt && want >= L0.fr[0] * 0.9 && want <= L0.fr[1] * 1.1) { S.focal = Math.round(clamp(want, L0.fr[0], L0.fr[1])); return; }
+    if (r.feq <= src * 1.6 && r.feq >= src * 0.7) return;
+    const ff = r.dev.sensor === 'FF';
+    const id = ff ? (src < 24 ? 'z1635' : src <= 70 ? 'z2470' : src <= 200 ? 'z70200' : 'z100400') : (want < 18 ? 'uw1018' : want <= 55 ? 'kit' : 'tele55250');
+    const L = D.LENSES.find(l => l.id === id);
+    S.lens = id; S.focal = Math.round(clamp(want, L.fr[0], L.fr[1])); S.tilt = 0;
+    if (S.afMode === 'M') S.afMode = 'S';
   }
   function showLoading(on, msg) {
     const el = $('#lab-loading'); if (!el) return;
@@ -689,7 +709,7 @@ const SIM = (() => {
   function applyPreset(p) {
     if (p.device) { S.device = p.device; }
     const isPh = !!D.PHONES.find(x => x.id === S.device);
-    if (p.scene) { S.scene = p.scene; const sm = sceneMeta(); S.D = sm.D; S.mf = sm.D; clock = 0; S.pan = false; S.approach = false; S.freeze = true; }
+    if (p.scene) { S.vertical = false; S.scene = p.scene; const sm = sceneMeta(); S.D = sm.D; S.mf = sm.D; clock = 0; S.pan = false; S.approach = false; S.freeze = true; }
     if (!isPh) {
       if (p.lens) { S.lens = p.lens; const L = lensObj(); S.focal = p.focal || (L.fr[0] === L.fr[1] ? L.fr[0] : Math.round(Math.sqrt(L.fr[0] * L.fr[1]))); if (L.mfOnly) { S.afMode = 'M'; S.mf = S.D; } }
       else if (p.focal) S.focal = p.focal;
@@ -856,19 +876,28 @@ const SIM = (() => {
     const host = $('#lab-scenes'); if (!host) return; host.innerHTML = '';
     const list = PH.index || [];
     const mkF = (key, opts) => h('div', { class: 'seg sm', role: 'radiogroup' }, ...opts.map(([v, t]) => { const b = h('button', { type: 'button', class: 'seg-b', role: 'radio', 'aria-checked': pf[key] === v ? 'true' : 'false' }, t); b.onclick = () => { pf[key] = v; buildScenePicker(); }; return b; }));
-    const photoRow = h('div', { class: 'scn-row' });
+    const strip = h('div', { class: 'ph-strip' });
     if (list.length) {
       const shown = list.filter(s => (pf.place === 'all' || s.place === pf.place) && (pf.light === 'all' || s.light === pf.light));
       for (const s of shown) {
-        const b = h('button', { type: 'button', class: 'scn photo', 'aria-pressed': S.scene === 'p:' + s.id ? 'true' : 'false' }, h('span', { class: 'scn-n' }, s.title), h('span', { class: 'scn-s' }, `${PLACE[s.place] || ''} · ${LIGHT[s.light] || ''}`));
-        b.onclick = () => setScene('p:' + s.id); photoRow.append(b);
+        const on = S.scene === 'p:' + s.id;
+        const b = h('button', { type: 'button', class: 'ph-card', 'aria-pressed': on ? 'true' : 'false', title: s.title },
+          s.thumb ? h('img', { src: `scenes/${s.id}/${s.thumb}`, alt: '', loading: 'lazy', decoding: 'async' }) : h('span', { class: 'ph-noimg' }),
+          h('span', { class: 'ph-t' }, s.title), h('span', { class: 'ph-s' }, `${PLACE[s.place] || ''} · ${LIGHT[s.light] || ''}`));
+        b.onclick = () => setScene('p:' + s.id); strip.append(b);
       }
-      if (!shown.length) photoRow.append(h('span', { class: 'hint' }, 'Không có ảnh nào khớp bộ lọc.'));
-    } else photoRow.append(h('span', { class: 'hint' }, PH.indexErr ? 'Chưa đọc được scenes/index.json. Ảnh thật cần chạy qua máy chủ web (GitHub Pages hoặc python3 -m http.server) – mở file trực tiếp sẽ không tải được.' : 'Đang tải danh sách ảnh…'));
+      if (!shown.length) strip.append(h('span', { class: 'hint' }, 'Không có ảnh nào khớp bộ lọc.'));
+    } else strip.append(h('span', { class: 'hint' }, PH.indexErr ? 'Chưa đọc được scenes/index.json. Ảnh thật cần chạy qua máy chủ web (GitHub Pages hoặc python3 -m http.server) – mở file trực tiếp sẽ không tải được.' : 'Đang tải danh sách ảnh…'));
+    const vecOn = !isPhoto();
+    const det = h('details', { class: 'vec-scenes', open: vecOn ? true : null },
+      h('summary', null, h('span', { class: 'dev-gl' }, 'Cảnh vẽ 2.5D'), h('span', { class: 'hint' }, ` (${D.SCENES_META.length}) – không phải ảnh thật; dùng cho bài đổi vị trí đứng, vệt đèn xe, chủ thể chạy liên tục`)),
+      h('div', { class: 'scn-row' }, ...D.SCENES_META.map(s => { const b = h('button', { type: 'button', class: 'scn', 'aria-pressed': S.scene === s.id ? 'true' : 'false', title: s.teach }, h('span', { class: 'scn-n' }, s.name), h('span', { class: 'scn-s' }, s.place)); b.onclick = () => setScene(s.id); return b; })));
     host.append(
-      h('div', { class: 'scn-g' }, h('div', { class: 'scn-head' }, h('span', { class: 'dev-gl' }, 'Ảnh thật'), mkF('place', [['all', 'Tất cả'], ['ngoai', 'Ngoài trời'], ['trong', 'Trong nhà']]), mkF('light', [['all', 'Mọi mức sáng'], ['thieu', 'Thiếu sáng'], ['du', 'Đủ sáng'], ['thua', 'Thừa sáng']])), photoRow),
-      h('div', { class: 'scn-g' }, h('div', { class: 'scn-head' }, h('span', { class: 'dev-gl' }, 'Cảnh dựng 2.5D'), h('span', { class: 'hint' }, 'đổi được vị trí đứng, chủ thể chuyển động liên tục')),
-        h('div', { class: 'scn-row' }, ...D.SCENES_META.map(s => { const b = h('button', { type: 'button', class: 'scn', 'aria-pressed': S.scene === s.id ? 'true' : 'false', title: s.teach }, h('span', { class: 'scn-n' }, s.name), h('span', { class: 'scn-s' }, s.place)); b.onclick = () => setScene(s.id); return b; }))));
+      h('div', { class: 'scn-g' }, h('div', { class: 'scn-head' }, h('span', { class: 'dev-gl' }, `Ảnh thật${list.length ? ' (' + list.length + ')' : ''}`), mkF('place', [['all', 'Tất cả'], ['ngoai', 'Ngoài trời'], ['trong', 'Trong nhà']]), mkF('light', [['all', 'Mọi mức sáng'], ['thieu', 'Thiếu sáng'], ['du', 'Đủ sáng'], ['thua', 'Thừa sáng']])), strip),
+      det);
+    const act = strip.querySelector('[aria-pressed="true"]');
+    if (act) requestAnimationFrame(() => { strip.scrollLeft = act.offsetLeft - strip.clientWidth / 2 + act.offsetWidth / 2; });
+    const badge = $('#lab-kind'); if (badge) { badge.textContent = isPhoto() ? 'Ảnh thật' : 'Cảnh vẽ 2.5D'; badge.className = 'vf-kind ' + (isPhoto() ? 'real' : 'drawn'); }
   }
   function updateDevChrome() {
     const r = rig(); const vf = $('#lab-vf'); if (!vf) return;
@@ -885,7 +914,8 @@ const SIM = (() => {
   }
   function resizeViewer() {
     const r = rig(); const asp = r.sensor.w / r.sensor.h;
-    const W = 900, Hh = Math.round(900 / asp);
+    const W = asp >= 1 ? 900 : Math.round(900 * asp), Hh = asp >= 1 ? Math.round(900 / asp) : 900;
+    $('#lab-vf').classList.toggle('vertical', asp < 1);
     if (ENG.W !== W || ENG.H !== Hh) { ENG.setSize(W, Hh); lastMeter = null; }
     for (const c of [cv, ov]) { c.width = W; c.height = Hh; }
     $('#lab-vf').style.setProperty('--asp', `${W} / ${Hh}`);
@@ -908,6 +938,7 @@ const SIM = (() => {
               h('div', { id: 'lab-review', class: 'review' }, h('canvas', { id: 'lab-review-cv' }), h('canvas', { id: 'lab-review-ov' }), h('div', { class: 'expo' }), h('div', { id: 'lab-review-meta', class: 'review-meta' })),
               h('div', { id: 'lab-phonectl', class: 'phonectl' }),
               h('div', { id: 'lab-loading', class: 'vf-loading', hidden: true }, 'Đang tải ảnh…'),
+              h('div', { id: 'lab-kind', class: 'vf-kind' }),
               h('div', { id: 'lab-wide', class: 'vf-note', hidden: true })),
             h('div', { id: 'lab-bar', class: 'vf-bar', 'aria-live': 'off' })),
           h('div', { class: 'shoot' },

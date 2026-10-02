@@ -65,14 +65,16 @@ const PH = (() => {
     const have = srcTanHalf(pk);
     let fw = want / have;                            // bề ngang khung cắt / bề ngang ảnh gốc
     const asp = W / H;
-    let tooWide = false;
-    if (fw > 1) { fw = 1; tooWide = true; }
+    let tooWide = fw > 1.08;
+    if (fw > 1) fw = 1;
     let cw = pk.w * fw, ch = cw / asp;
-    if (ch > pk.h) { ch = pk.h; cw = ch * asp; tooWide = true; }
+    if (ch > pk.h) { const k = pk.h / ch; ch = pk.h; cw = ch * asp; if (k < 0.92) tooWide = true; }
     // đặt khung quanh chủ thể (ưu tiên vùng mặt nếu là ảnh người), không vượt ra ngoài ảnh
     const sb = pk.meta.subject.box || [0.4, 0.3, 0.6, 0.7];
     const ppl = (pk.meta.kinds || []).some(k => /chan-dung|nguoi/.test(k));
+    const land = (pk.meta.kinds || []).includes('phong-canh');
     let cx = (sb[0] + sb[2]) / 2 * pk.w, cy = (ppl ? sb[1] + (sb[3] - sb[1]) * 0.35 : (sb[1] + sb[3]) / 2) * pk.h;
+    if (land) { cx = (cx + pk.w / 2) / 2; cy = (cy + pk.h / 2) / 2; } // phong cảnh: giữ bố cục gần với ảnh gốc
     cx = Math.min(pk.w - cw / 2, Math.max(cw / 2, cx)); cy = Math.min(pk.h - ch / 2, Math.max(ch / 2, cy));
     return { cw, ch, cx, cy, tooWide, frac: cw / pk.w, scale: W / cw };
   }

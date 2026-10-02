@@ -23,33 +23,33 @@
   1063
  ],
  "subject": {
-  "name": "Dòng xe máy",
-  "x": 0.2081,
-  "y": 0.2361,
-  "Z": 30.0,
+  "name": "Người đi xe máy",
+  "x": 0.66,
+  "y": 0.84,
+  "Z": 25.0,
   "box": [
-   0.0,
-   0.0,
-   0.5956,
-   0.9991
+   0.5212,
+   0.6623,
+   0.735,
+   0.9125
   ],
   "eye": [
-   0.2978,
-   0.4995
+   0.6281,
+   0.7874
   ],
   "face": null
  },
  "depth": {
-  "alpha": 38.82353,
-  "beta": -0.407843,
-  "bgDist": 90.0
+  "alpha": 11.988796,
+  "beta": -0.032493,
+  "bgDist": 200.0
  },
  "motion": {
   "speed": 6,
   "dir": 0
  },
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 1.25,
  "credit": {
   "author": "Roberto Vazquez",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

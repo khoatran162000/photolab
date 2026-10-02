@@ -19,28 +19,28 @@
  "subject": {
   "name": "Tên lửa",
   "x": 0.5,
-  "y": 0.548,
+  "y": 0.55,
   "Z": 300.0,
   "box": [
-   0.4172,
-   0.4145,
-   0.5422,
-   0.9977
+   0.45,
+   0.3372,
+   0.5219,
+   0.9508
   ],
   "eye": [
-   0.4797,
-   0.7061
+   0.4859,
+   0.644
   ],
   "face": null
  },
  "depth": {
-  "alpha": 179.084974,
-  "beta": 0.030501,
+  "alpha": 152.941185,
+  "beta": 0.043137,
   "bgDist": 3000.0
  },
  "motion": null,
  "headroom": 6,
- "meterTrim": 0,
+ "meterTrim": 0.7,
  "credit": {
   "author": "SpaceX",
   "license": "Phạm vi công cộng (SpaceX)",

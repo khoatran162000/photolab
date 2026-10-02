@@ -25,24 +25,24 @@
  ],
  "subject": {
   "name": "Người đi bộ",
-  "x": 0.15,
-  "y": 0.5136,
-  "Z": 8.0,
+  "x": 0.52,
+  "y": 0.55,
+  "Z": 10.0,
   "box": [
-   0.0,
-   0.0,
-   0.2056,
-   0.9991
+   0.4869,
+   0.4302,
+   0.5719,
+   0.746
   ],
   "eye": [
-   0.1028,
-   0.1798
+   0.5294,
+   0.487
   ],
   "face": null
  },
  "depth": {
-  "alpha": 7.764706,
-  "beta": -0.194118,
+  "alpha": 3.189542,
+  "beta": -0.079739,
   "bgDist": 40.0
  },
  "motion": {
@@ -50,7 +50,7 @@
   "dir": 0
  },
  "headroom": 5,
- "meterTrim": 0,
+ "meterTrim": 0.4,
  "credit": {
   "author": "Nilo Velez",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

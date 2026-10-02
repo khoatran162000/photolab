@@ -19,33 +19,33 @@
   1066
  ],
  "subject": {
-  "name": "Khán giả phía trước",
-  "x": 0.475,
-  "y": 0.9325,
+  "name": "Khán giả",
+  "x": 0.45,
+  "y": 0.72,
   "Z": 6.0,
   "box": [
    0.0,
-   0.8124,
-   0.9994,
-   0.9991
+   0.515,
+   0.7794,
+   0.9972
   ],
   "eye": [
-   0.4997,
-   0.846
+   0.3897,
+   0.6018
   ],
   "face": null
  },
  "depth": {
-  "alpha": 6.034602,
-  "beta": -0.131257,
-  "bgDist": 40.0
+  "alpha": 5.32353,
+  "beta": -0.153922,
+  "bgDist": 30.0
  },
  "motion": {
   "speed": 1.5,
   "dir": -90
  },
  "headroom": 6,
- "meterTrim": 0,
+ "meterTrim": 0.66,
  "credit": {
   "author": "Nicolás Flor",
   "license": "Giấy phép Unsplash (miễn phí)",

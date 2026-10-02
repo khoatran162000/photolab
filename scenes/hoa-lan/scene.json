@@ -24,29 +24,29 @@
  ],
  "subject": {
   "name": "Bình hoa lan",
-  "x": 0.5356,
-  "y": 0.5231,
+  "x": 0.5,
+  "y": 0.4,
   "Z": 0.9,
   "box": [
-   0.2536,
-   0.3287,
-   0.8881,
-   0.6744
+   0.1365,
+   0.0,
+   0.9592,
+   0.8581
   ],
   "eye": [
-   0.5708,
-   0.5016
+   0.5479,
+   0.4291
   ],
   "face": null
  },
  "depth": {
-  "alpha": 1.102087,
-  "beta": -0.275522,
+  "alpha": 0.988235,
+  "beta": -0.247059,
   "bgDist": 4.0
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.27,
  "credit": {
   "author": "Snehal Kashid",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

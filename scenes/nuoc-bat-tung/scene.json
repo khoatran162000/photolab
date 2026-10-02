@@ -23,32 +23,32 @@
  ],
  "subject": {
   "name": "Bọt nước",
-  "x": 0.5056,
-  "y": 0.9342,
-  "Z": 2.5,
+  "x": 0.6,
+  "y": 0.5,
+  "Z": 4.0,
   "box": [
-   0.0,
-   0.845,
-   0.9994,
-   0.9992
+   0.47,
+   0.2517,
+   0.7125,
+   0.7292
   ],
   "eye": [
-   0.4997,
-   0.9221
+   0.5913,
+   0.4904
   ],
   "face": null
  },
  "depth": {
-  "alpha": 2.470588,
-  "beta": -0.082353,
-  "bgDist": 30.0
+  "alpha": 1.934641,
+  "beta": -0.048366,
+  "bgDist": 40.0
  },
  "motion": {
   "speed": 4,
   "dir": -90
  },
  "headroom": 2,
- "meterTrim": 0,
+ "meterTrim": -0.49,
  "credit": {
   "author": "Faisal Ahammad",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

@@ -24,29 +24,29 @@
  ],
  "subject": {
   "name": "Cột đèn giao thông",
-  "x": 0.57,
-  "y": 0.9308,
-  "Z": 10.0,
+  "x": 0.47,
+  "y": 0.2,
+  "Z": 6.0,
   "box": [
-   0.0,
-   0.825,
-   0.9994,
-   0.9992
+   0.39,
+   0.09,
+   0.5494,
+   0.3292
   ],
   "eye": [
-   0.4997,
-   0.9121
+   0.4697,
+   0.2096
   ],
   "face": null
  },
  "depth": {
-  "alpha": 8.957688,
-  "beta": -0.044788,
-  "bgDist": 200.0
+  "alpha": 0.504202,
+  "beta": -0.001681,
+  "bgDist": 300.0
  },
  "motion": null,
  "headroom": 5,
- "meterTrim": 0,
+ "meterTrim": -0.09,
  "credit": {
   "author": "Tilak Bahadur Karki",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

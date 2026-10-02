@@ -24,29 +24,29 @@
  ],
  "subject": {
   "name": "Đèn chùm",
-  "x": 0.5317,
-  "y": 0.39,
+  "x": 0.5,
+  "y": 0.5,
   "Z": 3.0,
   "box": [
-   0.31,
-   0.2313,
-   0.7458,
-   0.5531
+   0.2683,
+   0.22,
+   0.7575,
+   0.6106
   ],
   "eye": [
-   0.5279,
-   0.3922
+   0.5129,
+   0.4153
   ],
   "face": null
  },
  "depth": {
-  "alpha": 4.9,
-  "beta": -0.684314,
+  "alpha": 4.838235,
+  "beta": -0.67549,
   "bgDist": 7.0
  },
  "motion": null,
  "headroom": 6,
- "meterTrim": 0,
+ "meterTrim": 2.85,
  "credit": {
   "author": "Sarath AR",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

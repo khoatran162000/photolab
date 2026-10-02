@@ -39,13 +39,13 @@
   ]
  },
  "depth": {
-  "alpha": 3.738562,
-  "beta": -0.911111,
+  "alpha": 4.392157,
+  "beta": -1.090196,
   "bgDist": 4.0
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.1,
  "credit": {
   "author": "NASA",
   "license": "Phạm vi công cộng (NASA)",

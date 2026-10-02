@@ -23,30 +23,30 @@
   1600
  ],
  "subject": {
-  "name": "Ô đèn gần nhất",
-  "x": 0.5256,
-  "y": 0.9325,
-  "Z": 5.0,
+  "name": "Dãy ô đèn",
+  "x": 0.45,
+  "y": 0.15,
+  "Z": 8.0,
   "box": [
-   0.0,
-   0.7288,
-   0.9994,
-   0.9994
+   0.28,
+   0.02,
+   0.7194,
+   0.2519
   ],
   "eye": [
    0.4997,
-   0.8641
+   0.1359
   ],
   "face": null
  },
  "depth": {
-  "alpha": 4.770054,
-  "beta": -0.063815,
-  "bgDist": 60.0
+  "alpha": 0.434783,
+  "beta": -0.007289,
+  "bgDist": 100.0
  },
  "motion": null,
  "headroom": 6,
- "meterTrim": 0,
+ "meterTrim": 2.28,
  "credit": {
   "author": "Sumit Javia",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

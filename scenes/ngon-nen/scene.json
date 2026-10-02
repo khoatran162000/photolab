@@ -23,29 +23,29 @@
  ],
  "subject": {
   "name": "Đèn nến",
-  "x": 0.485,
-  "y": 0.5469,
+  "x": 0.5,
+  "y": 0.5,
   "Z": 0.6,
   "box": [
-   0.2917,
-   0.3787,
-   0.6758,
-   0.7319
+   0.1792,
+   0.27,
+   0.8567,
+   0.8438
   ],
   "eye": [
-   0.4838,
-   0.5553
+   0.5179,
+   0.5569
   ],
   "face": null
  },
  "depth": {
-  "alpha": 0.608997,
-  "beta": -0.065975,
+  "alpha": 0.545329,
+  "beta": -0.057901,
   "bgDist": 4.0
  },
  "motion": null,
  "headroom": 6,
- "meterTrim": 0,
+ "meterTrim": 2.81,
  "credit": {
   "author": "Shubham Sedani",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

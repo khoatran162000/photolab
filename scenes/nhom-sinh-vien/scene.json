@@ -18,29 +18,34 @@
  ],
  "subject": {
   "name": "Nhóm sinh viên",
-  "x": 0.1625,
-  "y": 0.8105,
-  "Z": 3.5,
+  "x": 0.55,
+  "y": 0.45,
+  "Z": 2.0,
   "box": [
-   0.0,
-   0.1689,
-   0.9994,
-   0.9991
+   0.0044,
+   0.1886,
+   0.9419,
+   0.9953
   ],
   "eye": [
-   0.4997,
-   0.3183
+   0.5797,
+   0.3111
   ],
-  "face": null
+  "face": [
+   0.5256,
+   0.243,
+   0.6338,
+   0.4053
+  ]
  },
  "depth": {
-  "alpha": 3.233951,
-  "beta": -0.073006,
-  "bgDist": 40.0
+  "alpha": 1.882353,
+  "beta": -0.117647,
+  "bgDist": 15.0
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.37,
  "credit": {
   "author": "(xem trang Pexels)",
   "license": "Giấy phép Pexels (miễn phí, không bắt buộc ghi công)",

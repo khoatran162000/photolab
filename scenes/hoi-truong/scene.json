@@ -23,30 +23,30 @@
   1200
  ],
  "subject": {
-  "name": "Hàng ghế phía trước",
-  "x": 0.6362,
-  "y": 0.9217,
-  "Z": 6.0,
+  "name": "Hàng ghế",
+  "x": 0.5,
+  "y": 0.55,
+  "Z": 10.0,
   "box": [
    0.0,
-   0.6867,
+   0.0,
    0.9994,
    0.9992
   ],
   "eye": [
    0.4997,
-   0.7429
+   0.1798
   ],
   "face": null
  },
  "depth": {
-  "alpha": 4.288033,
-  "beta": -0.122515,
-  "bgDist": 35.0
+  "alpha": 6.252101,
+  "beta": -0.138936,
+  "bgDist": 45.0
  },
  "motion": null,
  "headroom": 1.5,
- "meterTrim": 0,
+ "meterTrim": 0.76,
  "credit": {
   "author": "Topher",
   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",

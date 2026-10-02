@@ -7,7 +7,8 @@
    "light": "thua",
    "kinds": [
     "phong-canh"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "nguoc-sang-mat-troi",
@@ -17,7 +18,8 @@
    "kinds": [
     "nguoi",
     "nguoc-sang"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "nuoc-bat-tung",
@@ -26,7 +28,8 @@
    "light": "thua",
    "kinds": [
     "chuyen-dong"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "bmx",
@@ -36,7 +39,8 @@
    "kinds": [
     "chuyen-dong",
     "the-thao"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "truot-van",
@@ -46,7 +50,8 @@
    "kinds": [
     "chuyen-dong",
     "nguoi"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "pho-ha-noi",
@@ -56,7 +61,8 @@
    "kinds": [
     "duong-pho",
     "chuyen-dong"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "doi-nhin-thung-lung",
@@ -66,7 +72,8 @@
    "kinds": [
     "phong-canh",
     "nguoi"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "hoang-hon-tren-nui",
@@ -77,7 +84,8 @@
     "nguoi",
     "nguoc-sang",
     "phong-canh"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "hem-dem",
@@ -88,7 +96,8 @@
     "nguoi",
     "duong-pho",
     "dem"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "o-den-dem",
@@ -98,7 +107,8 @@
    "kinds": [
     "dem",
     "anh-den"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "nga-tu-chang-vang",
@@ -108,7 +118,8 @@
    "kinds": [
     "duong-pho",
     "dem"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "bo-canh-cung",
@@ -118,7 +129,8 @@
    "kinds": [
     "macro",
     "vat-the"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "nhom-sinh-vien",
@@ -128,7 +140,8 @@
    "kinds": [
     "nhom-nguoi",
     "nguoi"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "goc-cafe-sang",
@@ -138,7 +151,8 @@
    "kinds": [
     "noi-that",
     "vat-the"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "hoa-lan",
@@ -148,7 +162,8 @@
    "kinds": [
     "vat-the",
     "tinh-vat"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "hoi-truong",
@@ -158,7 +173,8 @@
    "kinds": [
     "nhom-nguoi",
     "su-kien"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "den-chum",
@@ -168,7 +184,8 @@
    "kinds": [
     "anh-den",
     "noi-that"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "ban-trang-tri-toi",
@@ -177,7 +194,8 @@
    "light": "thieu",
    "kinds": [
     "vat-the"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "ngon-nen",
@@ -187,7 +205,8 @@
    "kinds": [
     "vat-the",
     "anh-nen"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "hoa-nhac",
@@ -199,7 +218,8 @@
     "su-kien",
     "anh-den",
     "chuyen-dong"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "demo-phi-hanh-gia",
@@ -209,7 +229,8 @@
    "kinds": [
     "chan-dung",
     "nguoi"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "demo-ly-ca-phe",
@@ -219,7 +240,8 @@
    "kinds": [
     "vat-the",
     "tinh-vat"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "demo-meo",
@@ -228,7 +250,8 @@
    "light": "du",
    "kinds": [
     "dong-vat"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   },
   {
    "id": "demo-ten-lua",
@@ -238,7 +261,8 @@
    "kinds": [
     "phong-canh",
     "anh-den"
-   ]
+   ],
+   "thumb": "thumb.jpg"
   }
  ]
 }

@@ -23,13 +23,23 @@
    },
    "K": 5800,
    "subject": {
-    "name": "Bãi cát tiền cảnh",
-    "dist": 4,
-    "hint": "nearest",
-    "tol": 0.08
+    "name": "Người trên bãi biển",
+    "dist": 40,
+    "hint": [
+     0.46,
+     0.62
+    ],
+    "tol": 0.05,
+    "box": [
+     0.38,
+     0.5,
+     0.6,
+     0.68
+    ]
    },
    "bgDist": 3000,
-   "headroom": 1.3
+   "headroom": 1.3,
+   "meterTrim": -0.07
   },
   {
    "id": "nguoc-sang-mat-troi",
@@ -55,12 +65,22 @@
    "K": 5800,
    "subject": {
     "name": "Người ngồi trên đá",
-    "dist": 8,
-    "hint": "nearest",
-    "tol": 0.1
+    "dist": 10,
+    "hint": [
+     0.52,
+     0.68
+    ],
+    "tol": 0.08,
+    "box": [
+     0.43,
+     0.6,
+     0.61,
+     0.75
+    ]
    },
    "bgDist": 5000,
-   "headroom": 6
+   "headroom": 6,
+   "meterTrim": 1.13
   },
   {
    "id": "nuoc-bat-tung",
@@ -85,16 +105,26 @@
    "K": 5600,
    "subject": {
     "name": "Bọt nước",
-    "dist": 2.5,
-    "hint": "nearest",
-    "tol": 0.1
+    "dist": 4,
+    "hint": [
+     0.6,
+     0.5
+    ],
+    "tol": 0.08,
+    "box": [
+     0.47,
+     0.24,
+     0.73,
+     0.74
+    ]
    },
-   "bgDist": 30,
+   "bgDist": 40,
    "motion": {
     "speed": 4,
     "dir": -90
    },
-   "headroom": 2
+   "headroom": 2,
+   "meterTrim": -0.49
   },
   {
    "id": "bmx",
@@ -121,14 +151,24 @@
    "subject": {
     "name": "Người lái BMX",
     "dist": 12,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.55,
+     0.45
+    ],
+    "tol": 0.1,
+    "box": [
+     0.41,
+     0.18,
+     0.69,
+     0.77
+    ]
    },
    "bgDist": 60,
    "motion": {
     "speed": 7,
     "dir": 0
-   }
+   },
+   "meterTrim": -1.09
   },
   {
    "id": "truot-van",
@@ -148,15 +188,25 @@
    "K": 5600,
    "subject": {
     "name": "Người trượt ván",
-    "dist": 6,
-    "hint": "nearest",
-    "tol": 0.1
+    "dist": 7,
+    "hint": [
+     0.48,
+     0.45
+    ],
+    "tol": 0.1,
+    "box": [
+     0.34,
+     0.16,
+     0.64,
+     0.9
+    ]
    },
    "bgDist": 40,
    "motion": {
     "speed": 5,
     "dir": 0
-   }
+   },
+   "meterTrim": 0.12
   },
   {
    "id": "pho-ha-noi",
@@ -182,16 +232,26 @@
    },
    "K": 5600,
    "subject": {
-    "name": "Dòng xe máy",
-    "dist": 30,
-    "hint": "nearest",
-    "tol": 0.08
+    "name": "Người đi xe máy",
+    "dist": 25,
+    "hint": [
+     0.66,
+     0.84
+    ],
+    "tol": 0.06,
+    "box": [
+     0.45,
+     0.62,
+     0.86,
+     0.99
+    ]
    },
-   "bgDist": 90,
+   "bgDist": 200,
    "motion": {
     "speed": 6,
     "dir": 0
-   }
+   },
+   "meterTrim": 1.25
   },
   {
    "id": "doi-nhin-thung-lung",
@@ -213,10 +273,20 @@
    "subject": {
     "name": "Người đeo ba lô",
     "dist": 6,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.22,
+     0.45
+    ],
+    "tol": 0.1,
+    "box": [
+     0.09,
+     0.18,
+     0.34,
+     1.0
+    ]
    },
-   "bgDist": 3000
+   "bgDist": 3000,
+   "meterTrim": 0.04
   },
   {
    "id": "hoang-hon-tren-nui",
@@ -237,13 +307,23 @@
    "ev": 11,
    "K": 3600,
    "subject": {
-    "name": "Hai người in bóng",
-    "dist": 10,
-    "hint": "nearest",
-    "tol": 0.1
+    "name": "Người ngắm hoàng hôn",
+    "dist": 30,
+    "hint": [
+     0.94,
+     0.66
+    ],
+    "tol": 0.06,
+    "box": [
+     0.88,
+     0.58,
+     0.995,
+     0.74
+    ]
    },
    "bgDist": 5000,
-   "headroom": 4
+   "headroom": 4,
+   "meterTrim": 0.6
   },
   {
    "id": "hem-dem",
@@ -271,16 +351,26 @@
    "K": 3800,
    "subject": {
     "name": "Người đi bộ",
-    "dist": 8,
-    "hint": "nearest",
-    "tol": 0.1
+    "dist": 10,
+    "hint": [
+     0.52,
+     0.55
+    ],
+    "tol": 0.08,
+    "box": [
+     0.45,
+     0.36,
+     0.59,
+     0.8
+    ]
    },
    "bgDist": 40,
    "motion": {
     "speed": 1.3,
     "dir": 0
    },
-   "headroom": 5
+   "headroom": 5,
+   "meterTrim": 0.4
   },
   {
    "id": "o-den-dem",
@@ -305,13 +395,23 @@
    },
    "K": 3200,
    "subject": {
-    "name": "Ô đèn gần nhất",
-    "dist": 5,
-    "hint": "nearest",
-    "tol": 0.1
+    "name": "Dãy ô đèn",
+    "dist": 8,
+    "hint": [
+     0.45,
+     0.15
+    ],
+    "tol": 0.08,
+    "box": [
+     0.28,
+     0.02,
+     0.72,
+     0.32
+    ]
    },
-   "bgDist": 60,
-   "headroom": 6
+   "bgDist": 100,
+   "headroom": 6,
+   "meterTrim": 2.28
   },
   {
    "id": "nga-tu-chang-vang",
@@ -337,12 +437,22 @@
    "K": 4500,
    "subject": {
     "name": "Cột đèn giao thông",
-    "dist": 10,
-    "hint": "nearest",
-    "tol": 0.1
+    "dist": 6,
+    "hint": [
+     0.47,
+     0.2
+    ],
+    "tol": 0.08,
+    "box": [
+     0.39,
+     0.09,
+     0.55,
+     0.33
+    ]
    },
-   "bgDist": 200,
-   "headroom": 5
+   "bgDist": 300,
+   "headroom": 5,
+   "meterTrim": -0.09
   },
   {
    "id": "bo-canh-cung",
@@ -369,10 +479,20 @@
    "subject": {
     "name": "Con bọ",
     "dist": 0.05,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.36,
+     0.58
+    ],
+    "tol": 0.1,
+    "box": [
+     0.23,
+     0.47,
+     0.48,
+     0.71
+    ]
    },
-   "bgDist": 0.6
+   "bgDist": 0.6,
+   "meterTrim": -0.07
   },
   {
    "id": "nhom-sinh-vien",
@@ -395,11 +515,21 @@
    "feq": 50,
    "subject": {
     "name": "Nhóm sinh viên",
-    "dist": 3.5,
-    "hint": "nearest",
-    "tol": 0.12
+    "dist": 2,
+    "hint": [
+     0.55,
+     0.45
+    ],
+    "tol": 0.22,
+    "box": [
+     0.005,
+     0.06,
+     0.995,
+     0.997
+    ]
    },
-   "bgDist": 40
+   "bgDist": 15,
+   "meterTrim": 0.37
   },
   {
    "id": "goc-cafe-sang",
@@ -424,12 +554,22 @@
    },
    "K": 4800,
    "subject": {
-    "name": "Bàn gỗ",
-    "dist": 2,
-    "hint": "nearest",
-    "tol": 0.1
+    "name": "Gương và bàn",
+    "dist": 3,
+    "hint": [
+     0.5,
+     0.4
+    ],
+    "tol": 0.08,
+    "box": [
+     0.28,
+     0.12,
+     0.64,
+     0.78
+    ]
    },
-   "bgDist": 6
+   "bgDist": 4.5,
+   "meterTrim": -0.01
   },
   {
    "id": "hoa-lan",
@@ -456,10 +596,20 @@
    "subject": {
     "name": "Bình hoa lan",
     "dist": 0.9,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.5,
+     0.4
+    ],
+    "tol": 0.1,
+    "box": [
+     0.12,
+     0.0,
+     0.96,
+     0.92
+    ]
    },
-   "bgDist": 4
+   "bgDist": 4,
+   "meterTrim": 0.27
   },
   {
    "id": "hoi-truong",
@@ -484,12 +634,16 @@
    },
    "K": 4000,
    "subject": {
-    "name": "Hàng ghế phía trước",
-    "dist": 6,
-    "hint": "nearest",
-    "tol": 0.08
+    "name": "Hàng ghế",
+    "dist": 10,
+    "hint": [
+     0.5,
+     0.55
+    ],
+    "tol": 0.06
    },
-   "bgDist": 35
+   "bgDist": 45,
+   "meterTrim": 0.76
   },
   {
    "id": "den-chum",
@@ -516,11 +670,21 @@
    "subject": {
     "name": "Đèn chùm",
     "dist": 3,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.5,
+     0.5
+    ],
+    "tol": 0.1,
+    "box": [
+     0.18,
+     0.18,
+     0.82,
+     0.8
+    ]
    },
    "bgDist": 7,
-   "headroom": 6
+   "headroom": 6,
+   "meterTrim": 2.85
   },
   {
    "id": "ban-trang-tri-toi",
@@ -544,13 +708,23 @@
    },
    "K": 2900,
    "subject": {
-    "name": "Bình hoa",
+    "name": "Bình hoa xanh",
     "dist": 0.8,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.3,
+     0.45
+    ],
+    "tol": 0.1,
+    "box": [
+     0.0,
+     0.04,
+     0.64,
+     0.98
+    ]
    },
    "bgDist": 3,
-   "headroom": 3
+   "headroom": 3,
+   "meterTrim": 0.45
   },
   {
    "id": "ngon-nen",
@@ -577,11 +751,21 @@
    "subject": {
     "name": "Đèn nến",
     "dist": 0.6,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.5,
+     0.5
+    ],
+    "tol": 0.1,
+    "box": [
+     0.18,
+     0.08,
+     0.86,
+     0.96
+    ]
    },
    "bgDist": 4,
-   "headroom": 6
+   "headroom": 6,
+   "meterTrim": 2.81
   },
   {
    "id": "hoa-nhac",
@@ -605,17 +789,27 @@
    "K": 4500,
    "feq": 35,
    "subject": {
-    "name": "Khán giả phía trước",
+    "name": "Khán giả",
     "dist": 6,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.45,
+     0.72
+    ],
+    "tol": 0.08,
+    "box": [
+     0.0,
+     0.42,
+     0.78,
+     1.0
+    ]
    },
-   "bgDist": 40,
+   "bgDist": 30,
    "motion": {
     "speed": 1.5,
     "dir": -90
    },
-   "headroom": 6
+   "headroom": 6,
+   "meterTrim": 0.66
   },
   {
    "id": "chan-dung-ngoai-troi",
@@ -730,7 +924,8 @@
     ],
     "tol": 0.12
    },
-   "bgDist": 4
+   "bgDist": 4,
+   "meterTrim": 0.1
   },
   {
    "id": "demo-ly-ca-phe",
@@ -754,10 +949,20 @@
    "subject": {
     "name": "Tách cà phê",
     "dist": 0.55,
-    "hint": "nearest",
-    "tol": 0.1
+    "hint": [
+     0.45,
+     0.4
+    ],
+    "tol": 0.1,
+    "box": [
+     0.1,
+     0.02,
+     0.82,
+     0.98
+    ]
    },
-   "bgDist": 1.5
+   "bgDist": 1.5,
+   "meterTrim": 0.44
   },
   {
    "id": "demo-meo",
@@ -780,10 +985,20 @@
    "subject": {
     "name": "Mèo",
     "dist": 0.9,
-    "hint": "nearest",
-    "tol": 0.12
+    "hint": [
+     0.42,
+     0.45
+    ],
+    "tol": 0.12,
+    "box": [
+     0.0,
+     0.0,
+     0.75,
+     1.0
+    ]
    },
-   "bgDist": 2.5
+   "bgDist": 2.5,
+   "meterTrim": -0.15
   },
   {
    "id": "demo-ten-lua",
@@ -812,10 +1027,17 @@
      0.5,
      0.55
     ],
-    "tol": 0.06
+    "tol": 0.06,
+    "box": [
+     0.44,
+     0.18,
+     0.56,
+     0.98
+    ]
    },
    "bgDist": 3000,
-   "headroom": 6
+   "headroom": 6,
+   "meterTrim": 0.7
   }
  ]
 }
