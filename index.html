@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PhotoLab – Phòng thí nghiệm nhiếp ảnh</title>
+<meta name="description" content="Học nhiếp ảnh tương tác: mô phỏng DSLR, mirrorless, chế độ Pro trên Galaxy và iPhone, đọc thông số ống kính.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%93%B7%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#2a2a2a">
+<link rel="stylesheet" href="css/styles.css?v=1">
+</head>
+<body>
+<header class="top">
+  <a id="brand" href="#lab"><span><span class="brand-name">PhotoLab by TranKhoaTech</span><br><span class="brand-sub">Phòng thí nghiệm nhiếp ảnh</span></span></a>
+  <nav id="nav" aria-label="Các phần"></nav>
+</header>
+<main>
+  <div id="p-lab" class="page"></div>
+  <div id="p-lens" class="page" hidden></div>
+  <div id="p-theory" class="page" hidden></div>
+  <div id="p-chal" class="page" hidden></div>
+  <div id="p-road" class="page" hidden></div>
+  <div id="p-quiz" class="page" hidden></div>
+</main>
+<footer>Mô phỏng mang tính giáo dục: hình ảnh được dựng bằng mô hình quang học đơn giản hóa (thấu kính mỏng, vòng mờ, nhiễu photon). Thông số điện thoại theo công bố của hãng; dải chỉnh trong chế độ Pro là gần đúng. Nội dung bám theo cấu trúc 20 tuần của giáo trình Digital Photography Complete Course (DK).</footer>
+<dialog id="cmp" aria-label="So sánh hai ảnh">
+  <div class="cmp-head"><h2 style="font-size:17px">So sánh hai ảnh</h2><button id="cmp-close" class="btn ghost sm" type="button">Đóng</button></div>
+  <div id="cmp-body"></div>
+</dialog>
+<script src="js/util.js?v=1" defer></script>
+<script src="js/data.js?v=1" defer></script>
+<script src="js/scenes.js?v=1" defer></script>
+<script src="js/engine.js?v=1" defer></script>
+<script src="js/photo.js?v=1" defer></script>
+<script src="js/sim.js?v=1" defer></script>
+<script src="js/pages.js?v=1" defer></script>
+</body>
+</html>

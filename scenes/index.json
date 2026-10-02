@@ -1,0 +1,43 @@
+{
+ "scenes": [
+  {
+   "id": "demo-phi-hanh-gia",
+   "title": "Chân dung trong studio",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "chan-dung",
+    "nguoi"
+   ]
+  },
+  {
+   "id": "demo-ly-ca-phe",
+   "title": "Tách cà phê trên bàn gỗ",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "vat-the",
+    "tinh-vat"
+   ]
+  },
+  {
+   "id": "demo-meo",
+   "title": "Chú mèo Chelsea",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "dong-vat"
+   ]
+  },
+  {
+   "id": "demo-ten-lua",
+   "title": "Bệ phóng tên lửa lúc chạng vạng",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "phong-canh",
+    "anh-den"
+   ]
+  }
+ ]
+}

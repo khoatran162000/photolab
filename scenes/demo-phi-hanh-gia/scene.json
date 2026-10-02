@@ -1,0 +1,59 @@
+{
+ "id": "demo-phi-hanh-gia",
+ "title": "Chân dung trong studio",
+ "desc": "Ảnh chân dung chính thức của phi hành gia Eileen Collins (NASA). Ảnh mẫu độ phân giải thấp.",
+ "place": "trong",
+ "light": "du",
+ "kinds": [
+  "chan-dung",
+  "nguoi"
+ ],
+ "ev": 9.0,
+ "K": 5500,
+ "feq": 85.0,
+ "src": {},
+ "size": [
+  512,
+  512
+ ],
+ "subject": {
+  "name": "Phi hành gia",
+  "x": 0.4492,
+  "y": 0.3496,
+  "Z": 2.5,
+  "box": [
+   0.0,
+   0.0312,
+   0.998,
+   0.998
+  ],
+  "eye": [
+   0.4385,
+   0.2068
+  ],
+  "face": [
+   0.3457,
+   0.1289,
+   0.5312,
+   0.3145
+  ]
+ },
+ "depth": {
+  "alpha": 3.738562,
+  "beta": -0.911111,
+  "bgDist": 4.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "NASA",
+  "license": "Phạm vi công cộng (NASA)",
+  "page": "https://flic.kr/p/r9qvLn"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

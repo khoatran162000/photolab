@@ -1,0 +1,5 @@
+numpy
+pillow
+opencv-python-headless
+onnxruntime
+scikit-image  # chỉ cần cho các gói cảnh mẫu demo-…

@@ -1,0 +1,54 @@
+{
+ "id": "demo-ly-ca-phe",
+ "title": "Tách cà phê trên bàn gỗ",
+ "desc": "Tĩnh vật trong quán cà phê. Ảnh mẫu độ phân giải thấp.",
+ "place": "trong",
+ "light": "du",
+ "kinds": [
+  "vat-the",
+  "tinh-vat"
+ ],
+ "ev": 8.0,
+ "K": 4600,
+ "feq": 50.0,
+ "src": {},
+ "size": [
+  600,
+  400
+ ],
+ "subject": {
+  "name": "Tách cà phê",
+  "x": 0.47,
+  "y": 0.5525,
+  "Z": 0.55,
+  "box": [
+   0.285,
+   0.37,
+   0.6567,
+   0.795
+  ],
+  "eye": [
+   0.4708,
+   0.5825
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 0.742415,
+  "beta": -0.408669,
+  "bgDist": 1.5
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Rachel Michetti",
+  "license": "CC0",
+  "page": ""
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

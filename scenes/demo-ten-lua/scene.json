@@ -1,0 +1,54 @@
+{
+ "id": "demo-ten-lua",
+ "title": "Bệ phóng tên lửa lúc chạng vạng",
+ "desc": "Tên lửa Falcon 9 trên bệ phóng, trời đã tối, đèn pha rất sáng. Ảnh mẫu độ phân giải thấp.",
+ "place": "ngoai",
+ "light": "thieu",
+ "kinds": [
+  "phong-canh",
+  "anh-den"
+ ],
+ "ev": 7.5,
+ "K": 4300,
+ "feq": 50.0,
+ "src": {},
+ "size": [
+  640,
+  427
+ ],
+ "subject": {
+  "name": "Tên lửa",
+  "x": 0.5,
+  "y": 0.548,
+  "Z": 300.0,
+  "box": [
+   0.4172,
+   0.4145,
+   0.5422,
+   0.9977
+  ],
+  "eye": [
+   0.4797,
+   0.7061
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 179.084974,
+  "beta": 0.030501,
+  "bgDist": 3000.0
+ },
+ "motion": null,
+ "headroom": 6,
+ "meterTrim": 0,
+ "credit": {
+  "author": "SpaceX",
+  "license": "Phạm vi công cộng (SpaceX)",
+  "page": "https://www.flickr.com/photos/spacexphotos/16511594820/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

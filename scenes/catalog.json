@@ -1,0 +1,821 @@
+{
+ "about": "Danh mục ảnh thật cho Lab. Chạy: python3 tools/tao_goi_canh.py. Trường \"source\" chọn nguồn: wordpress (link trang ảnh), pexels (id số), unsplash (id), url (link ảnh trực tiếp), file (đường dẫn trong repo). \"subject.dist\" và \"bgDist\": khoảng cách (m) tới chủ thể và tới hậu cảnh xa nhất. \"motion\": tốc độ chủ thể (m/s) và hướng (độ). \"headroom\": độ “vượt trắng” của vùng sáng nhất (đèn, mặt trời).",
+ "scenes": [
+  {
+   "id": "bai-cat-trang",
+   "title": "Bãi cát trắng giữa trưa",
+   "desc": "Cát trắng, nắng gắt – đồng hồ đo sáng dễ cho ảnh tối.",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "phong-canh"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/33969819f3/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.00024021138601969732,
+    "iso": 25,
+    "f": 5.4
+   },
+   "K": 5800,
+   "subject": {
+    "name": "Bãi cát tiền cảnh",
+    "dist": 4,
+    "hint": "nearest",
+    "tol": 0.08
+   },
+   "bgDist": 3000,
+   "headroom": 1.3
+  },
+  {
+   "id": "nguoc-sang-mat-troi",
+   "title": "Ngược sáng: mặt trời sau lưng",
+   "desc": "Người ngồi trên mỏm đá, mặt trời ngay phía sau – thử bù sáng và đo sáng điểm.",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "nguoi",
+    "nguoc-sang"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/8166a2391d/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 2.8,
+    "t": 0.0002920560747663551,
+    "iso": 25,
+    "f": 9
+   },
+   "K": 5800,
+   "subject": {
+    "name": "Người ngồi trên đá",
+    "dist": 8,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 5000,
+   "headroom": 6
+  },
+  {
+   "id": "nuoc-bat-tung",
+   "title": "Nước bắn tung dưới nắng",
+   "desc": "Bọt nước bị “đóng băng” ở 1/3250 giây – thử giảm tốc độ để thấy nước nhòe.",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "chuyen-dong"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/78965c4fdd/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.89,
+    "t": 0.0003076923076923077,
+    "iso": 50,
+    "f": 5.42
+   },
+   "K": 5600,
+   "subject": {
+    "name": "Bọt nước",
+    "dist": 2.5,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 30,
+   "motion": {
+    "speed": 4,
+    "dir": -90
+   },
+   "headroom": 2
+  },
+  {
+   "id": "bmx",
+   "title": "Biểu diễn xe đạp BMX",
+   "desc": "Chuyển động nhanh ngoài trời, chụp 1/800 giây.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "chuyen-dong",
+    "the-thao"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/74067ab967/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 5,
+    "t": 0.00125,
+    "iso": 400,
+    "f": 80
+   },
+   "K": 5600,
+   "subject": {
+    "name": "Người lái BMX",
+    "dist": 12,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 60,
+   "motion": {
+    "speed": 7,
+    "dir": 0
+   }
+  },
+  {
+   "id": "truot-van",
+   "title": "Trượt ván trên quảng trường",
+   "desc": "Người trượt ván đang chuyển động – thử lia máy theo.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "chuyen-dong",
+    "nguoi"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/1156abdb1b/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "K": 5600,
+   "subject": {
+    "name": "Người trượt ván",
+    "dist": 6,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 40,
+   "motion": {
+    "speed": 5,
+    "dir": 0
+   }
+  },
+  {
+   "id": "pho-ha-noi",
+   "title": "Phố Hà Nội giờ cao điểm",
+   "desc": "Xe máy, ô tô, người đi bộ – chụp ở 105 mm, khẩu f/8.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "duong-pho",
+    "chuyen-dong"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/3567ab29ca/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 8,
+    "t": 0.004,
+    "iso": 200,
+    "f": 105,
+    "feq": 105
+   },
+   "K": 5600,
+   "subject": {
+    "name": "Dòng xe máy",
+    "dist": 30,
+    "hint": "nearest",
+    "tol": 0.08
+   },
+   "bgDist": 90,
+   "motion": {
+    "speed": 6,
+    "dir": 0
+   }
+  },
+  {
+   "id": "doi-nhin-thung-lung",
+   "title": "Trên đồi nhìn xuống thung lũng",
+   "desc": "Phong cảnh có người ở tiền cảnh – luyện độ sâu trường ảnh và khoảng siêu tiêu.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "phong-canh",
+    "nguoi"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/7756aad041/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "ev": 13,
+   "K": 6000,
+   "subject": {
+    "name": "Người đeo ba lô",
+    "dist": 6,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 3000
+  },
+  {
+   "id": "hoang-hon-tren-nui",
+   "title": "Hoàng hôn trên núi",
+   "desc": "Hai người in bóng trên nền trời cam – dải tương phản rất rộng.",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "nguoi",
+    "nguoc-sang",
+    "phong-canh"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/726ab26475/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "ev": 11,
+   "K": 3600,
+   "subject": {
+    "name": "Hai người in bóng",
+    "dist": 10,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 5000,
+   "headroom": 4
+  },
+  {
+   "id": "hem-dem",
+   "title": "Con hẻm ban đêm",
+   "desc": "Người đi bộ trong hẻm tối, gốc chụp ISO 10000.",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "nguoi",
+    "duong-pho",
+    "dem"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/4536785066/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 2.8,
+    "t": 0.008,
+    "iso": 10000,
+    "f": 35,
+    "feq": 35
+   },
+   "K": 3800,
+   "subject": {
+    "name": "Người đi bộ",
+    "dist": 8,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 40,
+   "motion": {
+    "speed": 1.3,
+    "dir": 0
+   },
+   "headroom": 5
+  },
+  {
+   "id": "o-den-dem",
+   "title": "Phố treo ô phát sáng",
+   "desc": "Rất nhiều nguồn sáng nhỏ – lý tưởng để xem bokeh khi mở khẩu.",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "dem",
+    "anh-den"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/116694d051/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.02,
+    "iso": 64,
+    "f": 5.59
+   },
+   "K": 3200,
+   "subject": {
+    "name": "Ô đèn gần nhất",
+    "dist": 5,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 60,
+   "headroom": 6
+  },
+  {
+   "id": "nga-tu-chang-vang",
+   "title": "Ngã tư lúc chạng vạng",
+   "desc": "Trời xanh thẫm, đèn giao thông và đèn đường đã sáng.",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "duong-pho",
+    "dem"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/8566a283d1/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.78,
+    "t": 0.025,
+    "iso": 640,
+    "f": 6.86
+   },
+   "K": 4500,
+   "subject": {
+    "name": "Cột đèn giao thông",
+    "dist": 10,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 200,
+   "headroom": 5
+  },
+  {
+   "id": "bo-canh-cung",
+   "title": "Bọ cánh cứng trên lá (macro)",
+   "desc": "Chụp cận bằng camera điện thoại – vùng nét chỉ vài milimét.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "macro",
+    "vat-the"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/808684ba64/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 2.2,
+    "t": 0.001890359168241966,
+    "iso": 40,
+    "f": 2.22
+   },
+   "K": 5600,
+   "subject": {
+    "name": "Con bọ",
+    "dist": 0.05,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 0.6
+  },
+  {
+   "id": "nhom-sinh-vien",
+   "title": "Nhóm sinh viên ngoài trời",
+   "desc": "Ảnh nhóm – khó giữ nét tất cả mọi người khi mở khẩu lớn.",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "nhom-nguoi",
+    "nguoi"
+   ],
+   "source": {
+    "type": "pexels",
+    "id": 7973041,
+    "author": "(xem trang Pexels)"
+   },
+   "license": "Giấy phép Pexels (miễn phí, không bắt buộc ghi công)",
+   "ev": 12.5,
+   "K": 5800,
+   "feq": 50,
+   "subject": {
+    "name": "Nhóm sinh viên",
+    "dist": 3.5,
+    "hint": "nearest",
+    "tol": 0.12
+   },
+   "bgDist": 40
+  },
+  {
+   "id": "goc-cafe-sang",
+   "title": "Góc quán sáng sủa",
+   "desc": "Trong nhà nhưng nhiều ánh sáng cửa sổ.",
+   "place": "trong",
+   "light": "thua",
+   "kinds": [
+    "noi-that",
+    "vat-the"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/5668dc86b5/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.01,
+    "iso": 50,
+    "f": 4.25
+   },
+   "K": 4800,
+   "subject": {
+    "name": "Bàn gỗ",
+    "dist": 2,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 6
+  },
+  {
+   "id": "hoa-lan",
+   "title": "Bình hoa lan trên bàn kính",
+   "desc": "Tĩnh vật dưới ánh sáng tự nhiên trong nhà.",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "vat-the",
+    "tinh-vat"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/4066a2219a/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.01,
+    "iso": 320,
+    "f": 5.4
+   },
+   "K": 5400,
+   "subject": {
+    "name": "Bình hoa lan",
+    "dist": 0.9,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 4
+  },
+  {
+   "id": "hoi-truong",
+   "title": "Hội trường hội thảo",
+   "desc": "Nhiều người ngồi rải rác, ánh sáng trong nhà yếu.",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "nhom-nguoi",
+    "su-kien"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/42665084e5/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 2.4,
+    "t": 0.025,
+    "iso": 1250,
+    "f": 1.54
+   },
+   "K": 4000,
+   "subject": {
+    "name": "Hàng ghế phía trước",
+    "dist": 6,
+    "hint": "nearest",
+    "tol": 0.08
+   },
+   "bgDist": 35
+  },
+  {
+   "id": "den-chum",
+   "title": "Đèn chùm trong phòng tối",
+   "desc": "Nhiều bóng đèn ấm – thử cân bằng trắng và bokeh.",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "anh-den",
+    "noi-that"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/36063626f6/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.01,
+    "iso": 100,
+    "f": 4.25
+   },
+   "K": 2700,
+   "subject": {
+    "name": "Đèn chùm",
+    "dist": 3,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 7,
+   "headroom": 6
+  },
+  {
+   "id": "ban-trang-tri-toi",
+   "title": "Bàn trang trí ánh sáng yếu",
+   "desc": "Hoa giả, chân nến và gương trong phòng tối.",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "vat-the"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/1186a269ac/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.79,
+    "t": 0.030303030303030304,
+    "iso": 710,
+    "f": 4.74
+   },
+   "K": 2900,
+   "subject": {
+    "name": "Bình hoa",
+    "dist": 0.8,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 3,
+   "headroom": 3
+  },
+  {
+   "id": "ngon-nen",
+   "title": "Ngọn nến trong bóng tối",
+   "desc": "Chỉ có ánh nến – khoảng 1850 K, thiếu sáng nặng.",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "vat-the",
+    "anh-nen"
+   ],
+   "source": {
+    "type": "wordpress",
+    "page": "https://wordpress.org/photos/photo/8106294884/"
+   },
+   "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+   "exif": {
+    "N": 1.8,
+    "t": 0.022222222222222223,
+    "iso": 1100,
+    "f": 4.71
+   },
+   "K": 1900,
+   "subject": {
+    "name": "Đèn nến",
+    "dist": 0.6,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 4,
+   "headroom": 6
+  },
+  {
+   "id": "hoa-nhac",
+   "title": "Đám đông ở buổi hòa nhạc",
+   "desc": "Đèn sân khấu rất sáng, khán giả chuyển động – thiếu sáng kèm tương phản mạnh.",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "nhom-nguoi",
+    "su-kien",
+    "anh-den",
+    "chuyen-dong"
+   ],
+   "source": {
+    "type": "unsplash",
+    "id": "gKgL1WlE5KM",
+    "author": "Nicolás Flor"
+   },
+   "license": "Giấy phép Unsplash (miễn phí)",
+   "ev": 5,
+   "K": 4500,
+   "feq": 35,
+   "subject": {
+    "name": "Khán giả phía trước",
+    "dist": 6,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 40,
+   "motion": {
+    "speed": 1.5,
+    "dir": -90
+   },
+   "headroom": 6
+  },
+  {
+   "id": "chan-dung-ngoai-troi",
+   "skip": true,
+   "title": "Chân dung ngoài trời (cần chọn ảnh)",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "chan-dung",
+    "nguoi"
+   ],
+   "todo": "Chọn ảnh chân dung nửa người, mặt rõ, hậu cảnh còn nét (khẩu f/5.6 trở lên hoặc ảnh điện thoại). Gợi ý tìm: https://www.pexels.com/search/vietnamese%20woman%20portrait/",
+   "source": {
+    "type": "pexels",
+    "id": 0
+   },
+   "license": "Giấy phép Pexels",
+   "ev": 12.5,
+   "K": 5600,
+   "feq": 50,
+   "subject": {
+    "name": "Người mẫu",
+    "dist": 2.5,
+    "hint": "nearest",
+    "tol": 0.12
+   },
+   "bgDist": 20
+  },
+  {
+   "id": "lop-hoc",
+   "skip": true,
+   "title": "Lớp học / nhóm trong nhà (cần chọn ảnh)",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "nhom-nguoi"
+   ],
+   "todo": "Chọn ảnh lớp học hoặc nhóm người trong phòng, đủ sáng. Gợi ý: https://www.pexels.com/search/classroom%20students/",
+   "source": {
+    "type": "pexels",
+    "id": 0
+   },
+   "license": "Giấy phép Pexels",
+   "ev": 7,
+   "K": 4500,
+   "feq": 28,
+   "subject": {
+    "name": "Nhóm học sinh",
+    "dist": 4,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 10
+  },
+  {
+   "id": "the-thao-trong-nha",
+   "skip": true,
+   "title": "Thể thao trong nhà (cần chọn ảnh)",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "chuyen-dong",
+    "the-thao"
+   ],
+   "todo": "Chọn ảnh bóng rổ/bóng chuyền/cầu lông trong nhà thi đấu, chủ thể đã được đóng băng. Gợi ý: https://www.pexels.com/search/basketball%20indoor/",
+   "source": {
+    "type": "pexels",
+    "id": 0
+   },
+   "license": "Giấy phép Pexels",
+   "ev": 7.5,
+   "K": 4800,
+   "feq": 85,
+   "subject": {
+    "name": "Vận động viên",
+    "dist": 10,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 40,
+   "motion": {
+    "speed": 6,
+    "dir": 0
+   }
+  },
+  {
+   "id": "demo-phi-hanh-gia",
+   "title": "Chân dung trong studio",
+   "desc": "Ảnh chân dung chính thức của phi hành gia Eileen Collins (NASA). Ảnh mẫu độ phân giải thấp.",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "chan-dung",
+    "nguoi"
+   ],
+   "source": {
+    "type": "skimage",
+    "name": "astronaut",
+    "page": "https://flic.kr/p/r9qvLn",
+    "author": "NASA"
+   },
+   "license": "Phạm vi công cộng (NASA)",
+   "ev": 9.0,
+   "K": 5500,
+   "feq": 85,
+   "subject": {
+    "name": "Phi hành gia",
+    "dist": 2.5,
+    "hint": [
+     0.45,
+     0.35
+    ],
+    "tol": 0.12
+   },
+   "bgDist": 4
+  },
+  {
+   "id": "demo-ly-ca-phe",
+   "title": "Tách cà phê trên bàn gỗ",
+   "desc": "Tĩnh vật trong quán cà phê. Ảnh mẫu độ phân giải thấp.",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "vat-the",
+    "tinh-vat"
+   ],
+   "source": {
+    "type": "skimage",
+    "name": "coffee",
+    "author": "Rachel Michetti"
+   },
+   "license": "CC0",
+   "ev": 8.0,
+   "K": 4600,
+   "feq": 50,
+   "subject": {
+    "name": "Tách cà phê",
+    "dist": 0.55,
+    "hint": "nearest",
+    "tol": 0.1
+   },
+   "bgDist": 1.5
+  },
+  {
+   "id": "demo-meo",
+   "title": "Chú mèo Chelsea",
+   "desc": "Chân dung thú cưng trong nhà. Ảnh mẫu độ phân giải thấp.",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "dong-vat"
+   ],
+   "source": {
+    "type": "skimage",
+    "name": "chelsea",
+    "author": "Stefan van der Walt"
+   },
+   "license": "CC0",
+   "ev": 7.0,
+   "K": 4200,
+   "feq": 50,
+   "subject": {
+    "name": "Mèo",
+    "dist": 0.9,
+    "hint": "nearest",
+    "tol": 0.12
+   },
+   "bgDist": 2.5
+  },
+  {
+   "id": "demo-ten-lua",
+   "title": "Bệ phóng tên lửa lúc chạng vạng",
+   "desc": "Tên lửa Falcon 9 trên bệ phóng, trời đã tối, đèn pha rất sáng. Ảnh mẫu độ phân giải thấp.",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "phong-canh",
+    "anh-den"
+   ],
+   "source": {
+    "type": "skimage",
+    "name": "rocket",
+    "author": "SpaceX",
+    "page": "https://www.flickr.com/photos/spacexphotos/16511594820/"
+   },
+   "license": "Phạm vi công cộng (SpaceX)",
+   "ev": 7.5,
+   "K": 4300,
+   "feq": 50,
+   "subject": {
+    "name": "Tên lửa",
+    "dist": 300,
+    "hint": [
+     0.5,
+     0.55
+    ],
+    "tol": 0.06
+   },
+   "bgDist": 3000,
+   "headroom": 6
+  }
+ ]
+}
