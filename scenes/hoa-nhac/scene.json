@@ -1,0 +1,60 @@
+{
+ "id": "hoa-nhac",
+ "title": "Đám đông ở buổi hòa nhạc",
+ "desc": "Đèn sân khấu rất sáng, khán giả chuyển động – thiếu sáng kèm tương phản mạnh.",
+ "place": "trong",
+ "light": "thieu",
+ "kinds": [
+  "nhom-nguoi",
+  "su-kien",
+  "anh-den",
+  "chuyen-dong"
+ ],
+ "ev": 5.0,
+ "K": 4500,
+ "feq": 35.0,
+ "src": {},
+ "size": [
+  1600,
+  1066
+ ],
+ "subject": {
+  "name": "Khán giả phía trước",
+  "x": 0.475,
+  "y": 0.9325,
+  "Z": 6.0,
+  "box": [
+   0.0,
+   0.8124,
+   0.9994,
+   0.9991
+  ],
+  "eye": [
+   0.4997,
+   0.846
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 6.034602,
+  "beta": -0.131257,
+  "bgDist": 40.0
+ },
+ "motion": {
+  "speed": 1.5,
+  "dir": -90
+ },
+ "headroom": 6,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Nicolás Flor",
+  "license": "Giấy phép Unsplash (miễn phí)",
+  "page": "https://unsplash.com/photos/gKgL1WlE5KM"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png",
+  "bg": "bg.jpg"
+ }
+}

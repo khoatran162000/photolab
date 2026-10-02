@@ -1,0 +1,60 @@
+{
+ "id": "hoa-lan",
+ "title": "Bình hoa lan trên bàn kính",
+ "desc": "Tĩnh vật dưới ánh sáng tự nhiên trong nhà.",
+ "place": "trong",
+ "light": "du",
+ "kinds": [
+  "vat-the",
+  "tinh-vat"
+ ],
+ "ev": 6.66,
+ "K": 5400,
+ "feq": 23.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.01,
+  "iso": 320.0,
+  "f": 5.4,
+  "feq": 23.0
+ },
+ "size": [
+  1546,
+  1600
+ ],
+ "subject": {
+  "name": "Bình hoa lan",
+  "x": 0.5356,
+  "y": 0.5231,
+  "Z": 0.9,
+  "box": [
+   0.2536,
+   0.3287,
+   0.8881,
+   0.6744
+  ],
+  "eye": [
+   0.5708,
+   0.5016
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 1.102087,
+  "beta": -0.275522,
+  "bgDist": 4.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Snehal Kashid",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/4066a2219a/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

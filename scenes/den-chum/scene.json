@@ -1,0 +1,60 @@
+{
+ "id": "den-chum",
+ "title": "Đèn chùm trong phòng tối",
+ "desc": "Nhiều bóng đèn ấm – thử cân bằng trắng và bokeh.",
+ "place": "trong",
+ "light": "thieu",
+ "kinds": [
+  "anh-den",
+  "noi-that"
+ ],
+ "ev": 8.34,
+ "K": 2700,
+ "feq": 26.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.01,
+  "iso": 100.0,
+  "f": 4.25,
+  "feq": 26.0
+ },
+ "size": [
+  1200,
+  1600
+ ],
+ "subject": {
+  "name": "Đèn chùm",
+  "x": 0.5317,
+  "y": 0.39,
+  "Z": 3.0,
+  "box": [
+   0.31,
+   0.2313,
+   0.7458,
+   0.5531
+  ],
+  "eye": [
+   0.5279,
+   0.3922
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 4.9,
+  "beta": -0.684314,
+  "bgDist": 7.0
+ },
+ "motion": null,
+ "headroom": 6,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Sarath AR",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/36063626f6/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

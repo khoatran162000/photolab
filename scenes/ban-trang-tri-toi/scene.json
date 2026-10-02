@@ -1,0 +1,58 @@
+{
+ "id": "ban-trang-tri-toi",
+ "title": "Bàn trang trí ánh sáng yếu",
+ "desc": "Hoa giả, chân nến và gương trong phòng tối.",
+ "place": "trong",
+ "light": "thieu",
+ "kinds": [
+  "vat-the"
+ ],
+ "ev": 3.91,
+ "K": 2900,
+ "feq": 33.2,
+ "src": {
+  "N": 1.79,
+  "t": 0.030001,
+  "iso": 710.0,
+  "f": 4.74
+ },
+ "size": [
+  1600,
+  1600
+ ],
+ "subject": {
+  "name": "Bình hoa",
+  "x": 0.4994,
+  "y": 0.9356,
+  "Z": 0.8,
+  "box": [
+   0.0,
+   0.4863,
+   0.9994,
+   0.9994
+  ],
+  "eye": [
+   0.4997,
+   0.7428
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 0.983957,
+  "beta": -0.320143,
+  "bgDist": 3.0
+ },
+ "motion": null,
+ "headroom": 3,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Fiza Adil",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/1186a269ac/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

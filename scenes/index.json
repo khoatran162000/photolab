@@ -1,6 +1,207 @@
 {
  "scenes": [
   {
+   "id": "bai-cat-trang",
+   "title": "Bãi cát trắng giữa trưa",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "phong-canh"
+   ]
+  },
+  {
+   "id": "nguoc-sang-mat-troi",
+   "title": "Ngược sáng: mặt trời sau lưng",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "nguoi",
+    "nguoc-sang"
+   ]
+  },
+  {
+   "id": "nuoc-bat-tung",
+   "title": "Nước bắn tung dưới nắng",
+   "place": "ngoai",
+   "light": "thua",
+   "kinds": [
+    "chuyen-dong"
+   ]
+  },
+  {
+   "id": "bmx",
+   "title": "Biểu diễn xe đạp BMX",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "chuyen-dong",
+    "the-thao"
+   ]
+  },
+  {
+   "id": "truot-van",
+   "title": "Trượt ván trên quảng trường",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "chuyen-dong",
+    "nguoi"
+   ]
+  },
+  {
+   "id": "pho-ha-noi",
+   "title": "Phố Hà Nội giờ cao điểm",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "duong-pho",
+    "chuyen-dong"
+   ]
+  },
+  {
+   "id": "doi-nhin-thung-lung",
+   "title": "Trên đồi nhìn xuống thung lũng",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "phong-canh",
+    "nguoi"
+   ]
+  },
+  {
+   "id": "hoang-hon-tren-nui",
+   "title": "Hoàng hôn trên núi",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "nguoi",
+    "nguoc-sang",
+    "phong-canh"
+   ]
+  },
+  {
+   "id": "hem-dem",
+   "title": "Con hẻm ban đêm",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "nguoi",
+    "duong-pho",
+    "dem"
+   ]
+  },
+  {
+   "id": "o-den-dem",
+   "title": "Phố treo ô phát sáng",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "dem",
+    "anh-den"
+   ]
+  },
+  {
+   "id": "nga-tu-chang-vang",
+   "title": "Ngã tư lúc chạng vạng",
+   "place": "ngoai",
+   "light": "thieu",
+   "kinds": [
+    "duong-pho",
+    "dem"
+   ]
+  },
+  {
+   "id": "bo-canh-cung",
+   "title": "Bọ cánh cứng trên lá (macro)",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "macro",
+    "vat-the"
+   ]
+  },
+  {
+   "id": "nhom-sinh-vien",
+   "title": "Nhóm sinh viên ngoài trời",
+   "place": "ngoai",
+   "light": "du",
+   "kinds": [
+    "nhom-nguoi",
+    "nguoi"
+   ]
+  },
+  {
+   "id": "goc-cafe-sang",
+   "title": "Góc quán sáng sủa",
+   "place": "trong",
+   "light": "thua",
+   "kinds": [
+    "noi-that",
+    "vat-the"
+   ]
+  },
+  {
+   "id": "hoa-lan",
+   "title": "Bình hoa lan trên bàn kính",
+   "place": "trong",
+   "light": "du",
+   "kinds": [
+    "vat-the",
+    "tinh-vat"
+   ]
+  },
+  {
+   "id": "hoi-truong",
+   "title": "Hội trường hội thảo",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "nhom-nguoi",
+    "su-kien"
+   ]
+  },
+  {
+   "id": "den-chum",
+   "title": "Đèn chùm trong phòng tối",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "anh-den",
+    "noi-that"
+   ]
+  },
+  {
+   "id": "ban-trang-tri-toi",
+   "title": "Bàn trang trí ánh sáng yếu",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "vat-the"
+   ]
+  },
+  {
+   "id": "ngon-nen",
+   "title": "Ngọn nến trong bóng tối",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "vat-the",
+    "anh-nen"
+   ]
+  },
+  {
+   "id": "hoa-nhac",
+   "title": "Đám đông ở buổi hòa nhạc",
+   "place": "trong",
+   "light": "thieu",
+   "kinds": [
+    "nhom-nguoi",
+    "su-kien",
+    "anh-den",
+    "chuyen-dong"
+   ]
+  },
+  {
    "id": "demo-phi-hanh-gia",
    "title": "Chân dung trong studio",
    "place": "trong",

@@ -1,0 +1,59 @@
+{
+ "id": "doi-nhin-thung-lung",
+ "title": "Trên đồi nhìn xuống thung lũng",
+ "desc": "Phong cảnh có người ở tiền cảnh – luyện độ sâu trường ảnh và khoảng siêu tiêu.",
+ "place": "ngoai",
+ "light": "du",
+ "kinds": [
+  "phong-canh",
+  "nguoi"
+ ],
+ "ev": 13.0,
+ "K": 6000,
+ "feq": 33.2,
+ "src": {
+  "N": 1.79,
+  "t": 0.007002,
+  "iso": 56.0,
+  "f": 4.74
+ },
+ "size": [
+  1600,
+  1201
+ ],
+ "subject": {
+  "name": "Người đeo ba lô",
+  "x": 0.2231,
+  "y": 0.5262,
+  "Z": 6.0,
+  "box": [
+   0.1125,
+   0.2206,
+   0.3256,
+   0.9992
+  ],
+  "eye": [
+   0.2191,
+   0.3608
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 5.658376,
+  "beta": -0.001886,
+  "bgDist": 3000.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "jenous",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/7756aad041/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

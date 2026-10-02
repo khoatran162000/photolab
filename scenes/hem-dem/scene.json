@@ -1,0 +1,65 @@
+{
+ "id": "hem-dem",
+ "title": "Con hẻm ban đêm",
+ "desc": "Người đi bộ trong hẻm tối, gốc chụp ISO 10000.",
+ "place": "ngoai",
+ "light": "thieu",
+ "kinds": [
+  "nguoi",
+  "duong-pho",
+  "dem"
+ ],
+ "ev": 3.29,
+ "K": 3800,
+ "feq": 35.0,
+ "src": {
+  "N": 2.8,
+  "t": 0.008,
+  "iso": 10000.0,
+  "f": 35.0,
+  "feq": 35.0
+ },
+ "size": [
+  1600,
+  1067
+ ],
+ "subject": {
+  "name": "Người đi bộ",
+  "x": 0.15,
+  "y": 0.5136,
+  "Z": 8.0,
+  "box": [
+   0.0,
+   0.0,
+   0.2056,
+   0.9991
+  ],
+  "eye": [
+   0.1028,
+   0.1798
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 7.764706,
+  "beta": -0.194118,
+  "bgDist": 40.0
+ },
+ "motion": {
+  "speed": 1.3,
+  "dir": 0
+ },
+ "headroom": 5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Nilo Velez",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/4536785066/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png",
+  "bg": "bg.jpg"
+ }
+}

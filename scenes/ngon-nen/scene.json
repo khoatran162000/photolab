@@ -1,0 +1,59 @@
+{
+ "id": "ngon-nen",
+ "title": "Ngọn nến trong bóng tối",
+ "desc": "Chỉ có ánh nến – khoảng 1850 K, thiếu sáng nặng.",
+ "place": "trong",
+ "light": "thieu",
+ "kinds": [
+  "vat-the",
+  "anh-nen"
+ ],
+ "ev": 3.73,
+ "K": 1900,
+ "feq": 33.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.022222,
+  "iso": 1100.0,
+  "f": 4.71
+ },
+ "size": [
+  1200,
+  1600
+ ],
+ "subject": {
+  "name": "Đèn nến",
+  "x": 0.485,
+  "y": 0.5469,
+  "Z": 0.6,
+  "box": [
+   0.2917,
+   0.3787,
+   0.6758,
+   0.7319
+  ],
+  "eye": [
+   0.4838,
+   0.5553
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 0.608997,
+  "beta": -0.065975,
+  "bgDist": 4.0
+ },
+ "motion": null,
+ "headroom": 6,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Shubham Sedani",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/8106294884/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

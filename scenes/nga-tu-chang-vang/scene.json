@@ -1,0 +1,60 @@
+{
+ "id": "nga-tu-chang-vang",
+ "title": "Ngã tư lúc chạng vạng",
+ "desc": "Trời xanh thẫm, đèn giao thông và đèn đường đã sáng.",
+ "place": "ngoai",
+ "light": "thieu",
+ "kinds": [
+  "duong-pho",
+  "dem"
+ ],
+ "ev": 4.31,
+ "K": 4500,
+ "feq": 24.0,
+ "src": {
+  "N": 1.78,
+  "t": 0.025,
+  "iso": 640.0,
+  "f": 6.86,
+  "feq": 24.0
+ },
+ "size": [
+  1600,
+  1200
+ ],
+ "subject": {
+  "name": "Cột đèn giao thông",
+  "x": 0.57,
+  "y": 0.9308,
+  "Z": 10.0,
+  "box": [
+   0.0,
+   0.825,
+   0.9994,
+   0.9992
+  ],
+  "eye": [
+   0.4997,
+   0.9121
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 8.957688,
+  "beta": -0.044788,
+  "bgDist": 200.0
+ },
+ "motion": null,
+ "headroom": 5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Tilak Bahadur Karki",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/8566a283d1/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

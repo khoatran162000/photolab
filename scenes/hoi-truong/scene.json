@@ -1,0 +1,60 @@
+{
+ "id": "hoi-truong",
+ "title": "Hội trường hội thảo",
+ "desc": "Nhiều người ngồi rải rác, ánh sáng trong nhà yếu.",
+ "place": "trong",
+ "light": "thieu",
+ "kinds": [
+  "nhom-nguoi",
+  "su-kien"
+ ],
+ "ev": 4.2,
+ "K": 4000,
+ "feq": 14.0,
+ "src": {
+  "N": 2.4,
+  "t": 0.025,
+  "iso": 1250.0,
+  "f": 1.54,
+  "feq": 14.0
+ },
+ "size": [
+  1600,
+  1200
+ ],
+ "subject": {
+  "name": "Hàng ghế phía trước",
+  "x": 0.6362,
+  "y": 0.9217,
+  "Z": 6.0,
+  "box": [
+   0.0,
+   0.6867,
+   0.9994,
+   0.9992
+  ],
+  "eye": [
+   0.4997,
+   0.7429
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 4.288033,
+  "beta": -0.122515,
+  "bgDist": 35.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Topher",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/42665084e5/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

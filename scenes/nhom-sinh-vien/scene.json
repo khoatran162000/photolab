@@ -1,0 +1,54 @@
+{
+ "id": "nhom-sinh-vien",
+ "title": "Nhóm sinh viên ngoài trời",
+ "desc": "Ảnh nhóm – khó giữ nét tất cả mọi người khi mở khẩu lớn.",
+ "place": "ngoai",
+ "light": "du",
+ "kinds": [
+  "nhom-nguoi",
+  "nguoi"
+ ],
+ "ev": 12.5,
+ "K": 5800,
+ "feq": 50.0,
+ "src": {},
+ "size": [
+  1600,
+  1066
+ ],
+ "subject": {
+  "name": "Nhóm sinh viên",
+  "x": 0.1625,
+  "y": 0.8105,
+  "Z": 3.5,
+  "box": [
+   0.0,
+   0.1689,
+   0.9994,
+   0.9991
+  ],
+  "eye": [
+   0.4997,
+   0.3183
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 3.233951,
+  "beta": -0.073006,
+  "bgDist": 40.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "(xem trang Pexels)",
+  "license": "Giấy phép Pexels (miễn phí, không bắt buộc ghi công)",
+  "page": "https://www.pexels.com/photo/7973041/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

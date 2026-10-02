@@ -1,0 +1,61 @@
+{
+ "id": "hoang-hon-tren-nui",
+ "title": "Hoàng hôn trên núi",
+ "desc": "Hai người in bóng trên nền trời cam – dải tương phản rất rộng.",
+ "place": "ngoai",
+ "light": "thieu",
+ "kinds": [
+  "nguoi",
+  "nguoc-sang",
+  "phong-canh"
+ ],
+ "ev": 11.0,
+ "K": 3600,
+ "feq": 27.0,
+ "src": {
+  "N": 1.73,
+  "t": 0.000428,
+  "iso": 89.0,
+  "f": 4.38,
+  "feq": 27.0
+ },
+ "size": [
+  900,
+  1600
+ ],
+ "subject": {
+  "name": "Hai người in bóng",
+  "x": 0.3389,
+  "y": 0.915,
+  "Z": 10.0,
+  "box": [
+   0.0,
+   0.6663,
+   0.9989,
+   0.9994
+  ],
+  "eye": [
+   0.4994,
+   0.7262
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 9.116272,
+  "beta": -0.001823,
+  "bgDist": 5000.0
+ },
+ "motion": null,
+ "headroom": 4,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Amit Dholiya",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/726ab26475/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

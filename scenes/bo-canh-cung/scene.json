@@ -1,0 +1,60 @@
+{
+ "id": "bo-canh-cung",
+ "title": "Bọ cánh cứng trên lá (macro)",
+ "desc": "Chụp cận bằng camera điện thoại – vùng nét chỉ vài milimét.",
+ "place": "ngoai",
+ "light": "du",
+ "kinds": [
+  "macro",
+  "vat-the"
+ ],
+ "ev": 12.65,
+ "K": 5600,
+ "feq": 24.0,
+ "src": {
+  "N": 2.2,
+  "t": 0.0018867924528301887,
+  "iso": 40.0,
+  "f": 2.22,
+  "feq": 24.0
+ },
+ "size": [
+  1200,
+  1600
+ ],
+ "subject": {
+  "name": "Con bọ",
+  "x": 0.3717,
+  "y": 0.5481,
+  "Z": 0.05,
+  "box": [
+   0.2617,
+   0.45,
+   0.4925,
+   0.6519
+  ],
+  "eye": [
+   0.3771,
+   0.5509
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 0.053476,
+  "beta": -0.089127,
+  "bgDist": 0.6
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "jorinl",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/808684ba64/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

@@ -1,0 +1,60 @@
+{
+ "id": "o-den-dem",
+ "title": "Phố treo ô phát sáng",
+ "desc": "Rất nhiều nguồn sáng nhỏ – lý tưởng để xem bokeh khi mở khẩu.",
+ "place": "ngoai",
+ "light": "thieu",
+ "kinds": [
+  "dem",
+  "anh-den"
+ ],
+ "ev": 7.98,
+ "K": 3200,
+ "feq": 24.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.02,
+  "iso": 64.0,
+  "f": 5.59,
+  "feq": 24.0
+ },
+ "size": [
+  1600,
+  1600
+ ],
+ "subject": {
+  "name": "Ô đèn gần nhất",
+  "x": 0.5256,
+  "y": 0.9325,
+  "Z": 5.0,
+  "box": [
+   0.0,
+   0.7288,
+   0.9994,
+   0.9994
+  ],
+  "eye": [
+   0.4997,
+   0.8641
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 4.770054,
+  "beta": -0.063815,
+  "bgDist": 60.0
+ },
+ "motion": null,
+ "headroom": 6,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Sumit Javia",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/116694d051/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

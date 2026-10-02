@@ -1,0 +1,63 @@
+{
+ "id": "truot-van",
+ "title": "Trượt ván trên quảng trường",
+ "desc": "Người trượt ván đang chuyển động – thử lia máy theo.",
+ "place": "ngoai",
+ "light": "du",
+ "kinds": [
+  "chuyen-dong",
+  "nguoi"
+ ],
+ "ev": 13.88,
+ "K": 5600,
+ "feq": 39.0,
+ "src": {
+  "N": 11.0,
+  "t": 0.004,
+  "iso": 200.0,
+  "f": 39.0
+ },
+ "size": [
+  1600,
+  1067
+ ],
+ "subject": {
+  "name": "Người trượt ván",
+  "x": 0.5112,
+  "y": 0.9325,
+  "Z": 6.0,
+  "box": [
+   0.0,
+   0.8313,
+   0.9994,
+   0.9991
+  ],
+  "eye": [
+   0.4997,
+   0.8615
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 6.3391,
+  "beta": -0.158478,
+  "bgDist": 40.0
+ },
+ "motion": {
+  "speed": 5,
+  "dir": 0
+ },
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Julio Cesar Godinez",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/1156abdb1b/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png",
+  "bg": "bg.jpg"
+ }
+}

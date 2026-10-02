@@ -1,0 +1,59 @@
+{
+ "id": "bai-cat-trang",
+ "title": "Bãi cát trắng giữa trưa",
+ "desc": "Cát trắng, nắng gắt – đồng hồ đo sáng dễ cho ảnh tối.",
+ "place": "ngoai",
+ "light": "thua",
+ "kinds": [
+  "phong-canh"
+ ],
+ "ev": 15.72,
+ "K": 5800,
+ "feq": 23.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.00024020599995515563,
+  "iso": 25.0,
+  "f": 5.4,
+  "feq": 23.0
+ },
+ "size": [
+  1600,
+  1200
+ ],
+ "subject": {
+  "name": "Bãi cát tiền cảnh",
+  "x": 0.4725,
+  "y": 0.9333,
+  "Z": 4.0,
+  "box": [
+   0.0,
+   0.8583,
+   0.9994,
+   0.9992
+  ],
+  "eye": [
+   0.4997,
+   0.9287
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 3.628367,
+  "beta": -0.001209,
+  "bgDist": 3000.0
+ },
+ "motion": null,
+ "headroom": 1.3,
+ "meterTrim": 0,
+ "credit": {
+  "author": "mujuonly",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/33969819f3/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

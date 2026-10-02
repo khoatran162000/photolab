@@ -1,0 +1,60 @@
+{
+ "id": "goc-cafe-sang",
+ "title": "Góc quán sáng sủa",
+ "desc": "Trong nhà nhưng nhiều ánh sáng cửa sổ.",
+ "place": "trong",
+ "light": "thua",
+ "kinds": [
+  "noi-that",
+  "vat-the"
+ ],
+ "ev": 9.34,
+ "K": 4800,
+ "feq": 32.0,
+ "src": {
+  "N": 1.8,
+  "t": 0.01,
+  "iso": 50.0,
+  "f": 4.25,
+  "feq": 32.0
+ },
+ "size": [
+  1200,
+  1600
+ ],
+ "subject": {
+  "name": "Bàn gỗ",
+  "x": 0.455,
+  "y": 0.93,
+  "Z": 2.0,
+  "box": [
+   0.0,
+   0.84,
+   0.8975,
+   0.9994
+  ],
+  "eye": [
+   0.4487,
+   0.9197
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 2.552941,
+  "beta": -0.413725,
+  "bgDist": 6.0
+ },
+ "motion": null,
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Abishkaar Chettri",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/5668dc86b5/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png"
+ }
+}

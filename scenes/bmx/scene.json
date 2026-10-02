@@ -1,0 +1,64 @@
+{
+ "id": "bmx",
+ "title": "Biểu diễn xe đạp BMX",
+ "desc": "Chuyển động nhanh ngoài trời, chụp 1/800 giây.",
+ "place": "ngoai",
+ "light": "du",
+ "kinds": [
+  "chuyen-dong",
+  "the-thao"
+ ],
+ "ev": 12.29,
+ "K": 5600,
+ "feq": 120.0,
+ "src": {
+  "N": 5.0,
+  "t": 0.0012499999720602967,
+  "iso": 400.0,
+  "f": 80.0,
+  "feq": 120.0
+ },
+ "size": [
+  1600,
+  1063
+ ],
+ "subject": {
+  "name": "Người lái BMX",
+  "x": 0.52,
+  "y": 0.5682,
+  "Z": 12.0,
+  "box": [
+   0.41,
+   0.3857,
+   0.6269,
+   0.715
+  ],
+  "eye": [
+   0.5184,
+   0.5503
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 14.176471,
+  "beta": -0.236275,
+  "bgDist": 60.0
+ },
+ "motion": {
+  "speed": 7,
+  "dir": 0
+ },
+ "headroom": 1.5,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Roberto Vazquez",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/74067ab967/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png",
+  "bg": "bg.jpg"
+ }
+}

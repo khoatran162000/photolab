@@ -1,0 +1,63 @@
+{
+ "id": "nuoc-bat-tung",
+ "title": "Nước bắn tung dưới nắng",
+ "desc": "Bọt nước bị “đóng băng” ở 1/3250 giây – thử giảm tốc độ để thấy nước nhòe.",
+ "place": "ngoai",
+ "light": "thua",
+ "kinds": [
+  "chuyen-dong"
+ ],
+ "ev": 14.5,
+ "K": 5600,
+ "feq": 25.0,
+ "src": {
+  "N": 1.89,
+  "t": 0.00030763,
+  "iso": 50.0,
+  "f": 5.42,
+  "feq": 25.0
+ },
+ "size": [
+  1600,
+  1200
+ ],
+ "subject": {
+  "name": "Bọt nước",
+  "x": 0.5056,
+  "y": 0.9342,
+  "Z": 2.5,
+  "box": [
+   0.0,
+   0.845,
+   0.9994,
+   0.9992
+  ],
+  "eye": [
+   0.4997,
+   0.9221
+  ],
+  "face": null
+ },
+ "depth": {
+  "alpha": 2.470588,
+  "beta": -0.082353,
+  "bgDist": 30.0
+ },
+ "motion": {
+  "speed": 4,
+  "dir": -90
+ },
+ "headroom": 2,
+ "meterTrim": 0,
+ "credit": {
+  "author": "Faisal Ahammad",
+  "license": "CC0 – WordPress Photo Directory (không cần ghi công)",
+  "page": "https://wordpress.org/photos/photo/78965c4fdd/"
+ },
+ "files": {
+  "photo": "photo.jpg",
+  "depth": "depth.png",
+  "mask": "mask.png",
+  "bg": "bg.jpg"
+ }
+}
